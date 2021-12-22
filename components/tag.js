@@ -25,12 +25,12 @@ class Tag extends React.Component {
         tagEl.style.left = x + 'px';
         tagEl.style.top = y + 'px';
  
-            move();
-            
-            let introEl = document.getElementById("intro");
-            introEl.addEventListener('mousemove', move);
+        move();
+        
+        let introEl = document.getElementById("intro");
+        // introEl.addEventListener('mousemove', move);
 
-        // setInterval(move, 34)
+        setInterval(move, 34)
            
         //     // This function will do the animation
         function move() {
