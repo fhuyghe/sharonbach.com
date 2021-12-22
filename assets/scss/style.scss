@@ -1,0 +1,42 @@
+html,
+body {
+    background-color: #F2EEE5;
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+h1, h2{
+    font-size: 4em;
+    font-family: 'Migra';
+    line-height: 1.5em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+  /* Font */
+  @font-face {
+    font-family: 'Basier Square';
+    src: url('../fonts/BasierSquare-Regular.woff2') format('woff2'),
+        url('../fonts/BasierSquare-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: 'Migra';
+    src: url('../fonts/Migra-Extralight.woff2') format('woff2'),
+        url('../fonts/Migra-Extralight.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
