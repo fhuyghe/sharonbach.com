@@ -1,0 +1,30 @@
+@import './variables.scss';
+
+.tagWrap{
+    // animation: y 5s linear infinite alternate;
+    position: absolute;
+  }
+  .tag { 
+    text-transform: uppercase;
+    font-size: 1.5em;
+    background: $beige;
+    border: 2px solid $black;
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 2em;
+    white-space: nowrap;
+    // animation: x 5s linear infinite alternate;
+  }
+  
+  
+  @keyframes x {
+    100% {
+      transform: translateX(calc(100vw - 100px));
+    }
+  }
+  
+  @keyframes y {
+    100% {
+      transform: translateY(1000px);
+    }
+  }

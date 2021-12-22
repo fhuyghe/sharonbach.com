@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import Tag from '../components/tag'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
@@ -15,7 +16,12 @@ export default function Home() {
 
         {/* Projects */}
         <section id="intro">
-            <h1>Sharon Bach is a graphic designer working on identity, interactive and web design. She is currently the cofounder and art director at creative studio 13milliseconds. She lives in Upstate New York.</h1>
+          <h1>Sharon Bach is a graphic designer working on identity, interactive and web design. She is currently the cofounder and art director at creative studio 13milliseconds. She lives in Upstate New York.</h1>
+          <Tag>Mural</Tag>
+          <Tag>Interface</Tag>
+          <Tag>Packaging</Tag>
+          <Tag>Branding</Tag>
+          <Tag>Web design</Tag>
         </section>
 
         {/* Projects */}
