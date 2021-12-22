@@ -20,14 +20,14 @@ export default function Home() {
 
         {/* Projects */}
         <section id="bottomSection">
-          <div class="uk-container">
+          <div className="uk-container">
             <h2>Projects</h2>
           </div>
         </section>
 
         {/* Bottom */}
         <section id="bottomSection">
-          <div class="uk-container">
+          <div className="uk-container">
             <div className="uk-grid">
               <div id="bio">
                 <h2>About</h2>
