@@ -13,6 +13,7 @@ const Project = ({ params }) => {
                 attributes {
                     slug
                     title
+                    blurb
                 }
             }
         }
@@ -41,10 +42,11 @@ const Project = ({ params }) => {
         id="banner"
         className="uk-flex uk-flex-center uk-flex-middle uk-padding uk-margin"
       >
-        <h1>{project.attributes.title}</h1>
       </div>
           <div className="uk-section">
         <div className="uk-container uk-container-small">
+        <h1>{project.attributes.title}</h1>
+        <p>{project.attributes.blurb}</p>
               
               </div>
         </div>
