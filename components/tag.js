@@ -7,7 +7,7 @@ class Tag extends React.Component {
         this.tagRef = React.createRef();
     }
     
-    componentDidMount() { 
+    animateTags() { 
         let tagEl = this.tagRef.current;
         if (tagEl) { 
         //     // x and y are the co-ordinates of the circle

@@ -1,9 +1,29 @@
 import Head from 'next/head'
-import Image from 'next/image'
+import Projects from '../components/projects'
 import Tag from '../components/tag'
 import styles from '../styles/Home.module.css'
+import { useQuery, gql } from "@apollo/client";
 
 export default function Home() {
+
+  const { loading, error, data } = useQuery(gql`
+  query{
+    home{
+        data { 
+        attributes{
+            about
+            intro
+            clients
+          }
+        }
+      }
+    }
+    `);
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error :(</p>;
+    
+  const home = data.home.data ? data.home.data.attributes : {};
+
   return (
     <div className={styles.container}>
       <Head>
@@ -16,7 +36,7 @@ export default function Home() {
 
         {/* Projects */}
         <section id="intro">
-          <h1>Sharon Bach is a graphic designer working on identity, interactive and web design. She is currently the cofounder and art director at creative studio 13milliseconds. She lives in Upstate New York.</h1>
+          <h1>{home.intro}</h1>
           <Tag>Mural</Tag>
           <Tag>Interface</Tag>
           <Tag>Packaging</Tag>
@@ -28,18 +48,21 @@ export default function Home() {
         <section id="bottomSection">
           <div className="uk-container">
             <h2>Projects</h2>
+            <Projects />
           </div>
         </section>
 
         {/* Bottom */}
         <section id="bottomSection">
           <div className="uk-container">
-            <div className="uk-grid">
+            <div className="uk-grid uk-child-width-1-2@m">
               <div id="bio">
                 <h2>About</h2>
+                {home.about}
               </div>
               <div id="clients">
                 <h2>Clients</h2>
+                {home.clients}
               </div>
             </div>
           </div>
