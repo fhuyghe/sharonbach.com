@@ -1,10 +1,15 @@
 import Head from 'next/head'
+import { useState } from 'react'
 import Projects from '../components/projects'
 import Tag from '../components/tag'
 import styles from '../styles/Home.module.css'
+import Project from '../components/project'
 import { useQuery, gql } from "@apollo/client";
 
 export default function Home() {
+
+  //State Hook
+  const [featuredProject, setFeaturedProject] = useState('');
 
   const { loading, error, data } = useQuery(gql`
   query{
@@ -48,9 +53,12 @@ export default function Home() {
         <section id="bottomSection">
           <div className="uk-container">
             <h2>Projects</h2>
-            <Projects />
+            <Projects setFeaturedProject={setFeaturedProject}/>
           </div>
         </section>
+
+        {/* Open Project */}
+        { featuredProject && <Project slug={featuredProject} />}
 
         {/* Bottom */}
         <section id="bottomSection">

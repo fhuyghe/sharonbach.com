@@ -2,7 +2,8 @@ import React from "react";
 import Card from "./card";
 import { useQuery, gql } from "@apollo/client";
 
-const Projects = () => {
+const Projects = (props) => {
+  console.log(props)
 const { loading, error, data } = useQuery(gql`
     query Projects {
         projects{
@@ -43,6 +44,7 @@ return (
             {projects.map((update, i) => {
               return (
                 <Card
+                  setFeaturedProject={props.setFeaturedProject}
                   project={update}
                   key={update.id}
                 />

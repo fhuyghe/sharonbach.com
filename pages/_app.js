@@ -13,11 +13,8 @@ import {
 //Start Apollo client
 const client = new ApolloClient({
   uri: process.env.NEXT_PUBLIC_STRAPI_API_URL ? process.env.NEXT_PUBLIC_STRAPI_API_URL + '/graphql' : "http://localhost:1337/graphql",
-  cache: new InMemoryCache(),
-  errorPolicy: 'all'
+  cache: new InMemoryCache()
 });
-
-console.log('ENV variables:', process.env)
 
 // Store Strapi Global object in context
 export const GlobalContext = createContext({});

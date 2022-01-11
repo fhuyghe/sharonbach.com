@@ -1,27 +1,32 @@
 import React from "react";
-import Link from "next/link";
 import Image from "./image";
-//import Moment from "react-moment";
+import Project from "./project"
 
-const Card = ({ project }) => {
-  const slug = project.attributes.slug;
+class Card extends React.Component {
+  constructor(props) { 
+    super(props);
+    this.state = {
+      openProject: false
+    };
+  }
 
-  return (
-    <div className="project-card">
-    <Link as={`/project/${slug}`} href={"/project/" + slug}>
-      <a className="uk-link-reset">
-        <div className="uk-card uk-card-muted">
-          <div className="uk-card-media-top"><Image image={project.attributes.featuredImage} /></div>
-        </div>
-        <div className="caption">
-          {/* <Moment format="MMM Do YYYY">{project.attributes.updateDate}</Moment> */}
-          <h3 className="title">{project.attributes.title}</h3>
-          <div className="blurb">{project.attributes.blurb}</div>
-        </div>
-      </a>
-      </Link>
+  render() {
+    let project = this.props.project;
+
+    return (
+      <div className="project-card" onClick={() => this.props.setFeaturedProject(project.attributes.slug)}>
+        <a className="uk-link-reset">
+          <div className="uk-card uk-card-muted">
+            <div className="uk-card-media-top"><Image image={project.attributes.featuredImage} /></div>
+          </div>
+          <div className="caption">
+            <h3 className="title">{project.attributes.title}</h3>
+            <div className="blurb">{project.attributes.blurb}</div>
+          </div>
+        </a>
       </div>
-  );
+    )
+  }
 };
 
 export default Card;
