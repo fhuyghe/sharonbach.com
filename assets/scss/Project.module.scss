@@ -1,7 +1,7 @@
 @import './variables.scss';
 
 .projectBlock{
-    position: absolute;
+    position: fixed;
     width: 90%;
     top: 0;
     left: 10%;
@@ -9,13 +9,14 @@
     border-left: 3px solid $black;
     background: $beige;
     z-index: 99;
+    padding: $grid-gutter;
+}
 
-    &:before{
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        background: rgba($black, .8);
-    }
+.projectBackground{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba($black, .5);
 }

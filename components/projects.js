@@ -3,7 +3,6 @@ import Card from "./card";
 import { useQuery, gql } from "@apollo/client";
 
 const Projects = (props) => {
-  console.log(props)
 const { loading, error, data } = useQuery(gql`
     query Projects {
         projects{

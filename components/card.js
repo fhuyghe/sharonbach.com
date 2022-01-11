@@ -1,20 +1,14 @@
 import React from "react";
 import Image from "./image";
-import Project from "./project"
+import { useRouter } from 'next/router'
 
-class Card extends React.Component {
-  constructor(props) { 
-    super(props);
-    this.state = {
-      openProject: false
-    };
-  }
-
-  render() {
-    let project = this.props.project;
+const Card = (props)=>{
+    
+    const router = useRouter()
+    let project = props.project;
 
     return (
-      <div className="project-card" onClick={() => this.props.setFeaturedProject(project.attributes.slug)}>
+      <div className="project-card" onClick={() => router.push(`?project=${project.attributes.slug}`)}>
         <a className="uk-link-reset">
           <div className="uk-card uk-card-muted">
             <div className="uk-card-media-top"><Image image={project.attributes.featuredImage} /></div>
@@ -26,7 +20,6 @@ class Card extends React.Component {
         </a>
       </div>
     )
-  }
 };
 
 export default Card;

@@ -4,6 +4,8 @@ import Script from 'next/script'
 import "../assets/scss/style.scss";
 import { createContext } from "react";
 import { getStrapiMedia } from "../lib/media";
+import { fetchAPI } from "../lib/api";
+import { useRouter } from 'next/router'
 import {
   ApolloClient,
   InMemoryCache,
@@ -22,6 +24,8 @@ export const GlobalContext = createContext({});
 const MyApp = ({ Component, pageProps }) => {
   const { global } = pageProps;
 
+  const router = useRouter()
+
   return (
     <>
       <Head>
@@ -38,11 +42,20 @@ const MyApp = ({ Component, pageProps }) => {
 
       <GlobalContext.Provider value={global}>
         <ApolloProvider client={client}>
-          <Component {...pageProps} />
+          <Component {...pageProps} query={router.query} />
         </ApolloProvider>
       </GlobalContext.Provider>
     </>
   );
+};
+
+MyApp.getInitialProps = async (ctx) => {
+  // Calls page's `getInitialProps` and fills `appProps.pageProps`
+  const appProps = await App.getInitialProps(ctx);
+  // Fetch global site settings from Strapi
+  const global = await fetchAPI("/api/global?populate=*");
+  // Pass the data to our page via props
+  return { ...appProps, pageProps: { global } };
 };
 
 export default MyApp;
