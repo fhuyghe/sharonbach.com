@@ -19,6 +19,7 @@ const Project = (props) => {
                 blurb
                 categories{
                   data{
+                    id
                     attributes{
                       name
                     }
@@ -95,7 +96,7 @@ const Project = (props) => {
             {categories &&
               <div id="categories">
                 {categories.data.map((cat) => {
-                  return <div className={style.projectCategory}>{cat.attributes.name}</div>
+                  return <div key={cat.id} className={style.projectCategory}>{cat.attributes.name}</div>
                 })}
               </div>
             }
