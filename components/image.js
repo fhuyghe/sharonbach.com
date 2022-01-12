@@ -8,7 +8,7 @@ const ImageEl = ({ image }) => {
   return (
     <Image
       src={imageUrl}
-      alt={imageInfo.alternativeText || imageInfo.name}
+      alt={imageInfo.alternativeText || imageInfo.name || ''}
       width={imageInfo.width || 150}
       height={imageInfo.height || 150}
     />
