@@ -17,6 +17,13 @@ const Project = (props) => {
                 slug
                 title
                 blurb
+                categories{
+                  data{
+                    attributes{
+                      name
+                    }
+                  }
+                }
               Content{
                 __typename
                   ... on ComponentContentBlockText{
@@ -61,9 +68,9 @@ const Project = (props) => {
   if (error) return <p>Error :( { console.log(error) }</p>;
   
   const project = data.projects.data[0];
-  if (!project) return '';
-
-
+  if (!project) return ''
+  const categories = project.attributes.categories;
+  console.log(categories)
 
   //Close Project
   const closeProject = (router) => { 
@@ -78,12 +85,20 @@ const Project = (props) => {
     project: true,
   };
 
+
   return (
     <div>
       <Seo seo={seo} />
       <div className={style.projectBlock}>
         <div className={style.projectWrap}>
-        <div className="uk-container">
+          <div className="uk-container">
+            {categories &&
+              <div id="categories">
+                {categories.data.map((cat) => {
+                  return <div className={style.projectCategory}>{cat.attributes.name}</div>
+                })}
+              </div>
+            }
         <h1>{project.attributes.title}</h1>
         <p>{project.attributes.blurb}</p>
         {project.attributes.Content.map((section) => { 
