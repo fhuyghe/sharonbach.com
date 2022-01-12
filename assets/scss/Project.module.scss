@@ -10,6 +10,11 @@
     background: $beige;
     z-index: 99;
     padding: $grid-gutter;
+    overflow-y: auto;
+}
+
+.projectWrap{
+    position: absolute;
 }
 
 .projectBackground{

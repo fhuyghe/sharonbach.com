@@ -3,7 +3,7 @@ import { getStrapiMedia } from "../lib/media";
 
 const ImageEl = ({ image }) => {
   const imageUrl = getStrapiMedia(image);
-  const imageInfo = image.data.attributes
+  const imageInfo = image.data ? image.data.attributes : image.attributes;
 
   return (
     <Image

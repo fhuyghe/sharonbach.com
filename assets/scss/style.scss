@@ -9,6 +9,10 @@ body {
   font-size: 20px;
 }
 
+body.project-open{
+  overflow: hidden;
+}
+
 h1, h2{
     font-size: 3em;
     font-family: 'Migra';

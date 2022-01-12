@@ -4,6 +4,7 @@ import Projects from '../components/projects'
 import Tag from '../components/tag'
 import styles from '../styles/Home.module.css'
 import Project from '../components/project'
+import ReactMarkdown from 'react-markdown'
 import { useQuery, gql } from "@apollo/client";
 import { useRouter } from 'next/router'
 
@@ -15,6 +16,7 @@ export default function Home(props) {
 
   useEffect(() => {
     setFeaturedProject(router.query.project)
+    router.query.project && document.body.classList.add('project-open');
   }, [router.query])
 
   const { loading, error, data } = useQuery(gql`
@@ -73,11 +75,11 @@ export default function Home(props) {
             <div className="uk-grid uk-child-width-1-2@m">
               <div id="bio">
                 <h2>About</h2>
-                {home.about}
+                <ReactMarkdown>{home.about}</ReactMarkdown>
               </div>
               <div id="clients">
                 <h2>Clients</h2>
-                {home.clients}
+                <ReactMarkdown>{home.clients}</ReactMarkdown>
               </div>
             </div>
           </div>

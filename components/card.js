@@ -5,10 +5,15 @@ import { useRouter } from 'next/router'
 const Card = (props)=>{
     
     const router = useRouter()
-    let project = props.project;
+  let project = props.project;
+  
+  const openProject = () => {
+    document.body.classList.add('project-open');
+    router.push(`?project=${project.attributes.slug}`)
+  }
 
     return (
-      <div className="project-card" onClick={() => router.push(`?project=${project.attributes.slug}`)}>
+      <div className="project-card" onClick={() => openProject()}>
         <a className="uk-link-reset">
           <div className="uk-card uk-card-muted">
             <div className="uk-card-media-top"><Image image={project.attributes.featuredImage} /></div>
