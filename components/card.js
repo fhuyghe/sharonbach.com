@@ -6,14 +6,15 @@ const Card = (props)=>{
     
     const router = useRouter()
   let project = props.project;
+  console.log(project)
   
-  const openProject = () => {
+  const openProject = (project) => {
     document.body.classList.add('project-open');
-    router.push(`?project=${project.attributes.slug}`)
+    router.push(project.attributes.slug && `?project=${project.attributes.slug}`)
   }
 
     return (
-      <div className="project-card" onClick={() => openProject()}>
+      <div className="project-card" onClick={() => openProject(project)}>
         <a className="uk-link-reset">
           <div className="uk-card uk-card-muted">
             <div className="uk-card-media-top"><Image image={project.attributes.featuredImage} /></div>
