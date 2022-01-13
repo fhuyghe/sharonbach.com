@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 import { useQuery, gql } from "@apollo/client";
 
 const ProjectWrap = (props) => {
+  const router = useRouter()
   // States
   const [leaving, setLeaving] = useState();
 
@@ -73,7 +74,6 @@ const ProjectWrap = (props) => {
   
   
   //Close Project
-  const router = useRouter()
   const closeProject = () => {
     setLeaving(true)
     setTimeout(() => { 
