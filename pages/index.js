@@ -2,8 +2,8 @@ import Head from 'next/head'
 import { useState, useEffect } from 'react'
 import Projects from '../components/projects'
 import Tag from '../components/tag'
-import styles from '../styles/Home.module.css'
-import Project from '../components/project'
+import styles from '../assets/scss/Home.module.scss'
+import ProjectWrap from '../components/project-wrap'
 import ReactMarkdown from 'react-markdown'
 import { useQuery, gql } from "@apollo/client";
 import { useRouter } from 'next/router'
@@ -16,7 +16,7 @@ export default function Home(props) {
 
   useEffect(() => {
     setFeaturedProject(router.query.project)
-    router.query.project && document.body.classList.add('project-open');
+    document.body.classList.toggle('project-open', router.query.project);
   }, [router.query])
 
   const { loading, error, data } = useQuery(gql`
@@ -50,7 +50,7 @@ export default function Home(props) {
 
         {/* Projects */}
         <section id="intro">
-          <h1>{home.intro}</h1>
+          <h1 className={styles.title}>{home.intro}</h1>
           <Tag>Mural</Tag>
           <Tag>Interface</Tag>
           <Tag>Packaging</Tag>
@@ -61,24 +61,24 @@ export default function Home(props) {
         {/* Projects */}
         <section id="bottomSection">
           <div className="uk-container">
-            <h2>Projects</h2>
+            <h2 className={styles.title}>Projects</h2>
             <Projects setFeaturedProject={setFeaturedProject}/>
           </div>
         </section>
 
         {/* Open Project */}
-        {featuredProject && <Project slug={featuredProject} setFeaturedProject={setFeaturedProject} />}
+        {featuredProject && <ProjectWrap slug={featuredProject} />}
 
         {/* Bottom */}
         <section id="bottomSection">
           <div className="uk-container">
             <div className="uk-grid uk-child-width-1-2@m">
               <div id="bio">
-                <h2>About</h2>
+                <h2 className={styles.title}>About</h2>
                 <ReactMarkdown>{home.about}</ReactMarkdown>
               </div>
               <div id="clients">
-                <h2>Clients</h2>
+                <h2 className={styles.title}>Clients</h2>
                 <ReactMarkdown>{home.clients}</ReactMarkdown>
               </div>
             </div>
@@ -86,9 +86,6 @@ export default function Home(props) {
         </section>
 
       </main>
-
-      <footer className={styles.footer}>
-      </footer>
     </div>
   )
 }

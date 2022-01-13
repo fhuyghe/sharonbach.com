@@ -4,13 +4,19 @@
     position: fixed;
     width: 90%;
     top: 0;
-    left: 10%;
+    left: 100%;
     min-height: 100vh;
     border-left: 3px solid $black;
     background: $beige;
     z-index: 99;
     padding: $grid-gutter;
     overflow-y: auto;
+    animation: slideIn .5s ease-in-out forwards;
+}
+
+.projectBlockLeaving{
+    @extend .projectBlock;
+    animation: slideOut .5s ease-in-out forwards;
 }
 
 .projectWrap{
@@ -23,16 +29,74 @@
     height: 100%;
     top: 0;
     left: 0;
-    background: rgba($black, .5);
+    background: $black;
+    opacity: 0;
+    cursor: pointer;
+    animation: fadeIn .5s ease-in-out forwards;
+}
+
+.projectBackgroundLeaving{
+    @extend .projectBackground;
+    animation: fadeOut .5s ease-in-out forwards;
 }
 
 .projectCategory{
+    font-family: 'Basier Square', sans-serif;
     text-transform: uppercase;
-    font-size: 1.5em;
+    font-size: 1.2em;
     background: $beige;
     border: 2px solid $black;
     display: inline-block;
     padding: 10px 20px;
     border-radius: 2em;
     white-space: nowrap;
+}
+
+.title{
+    font-family: 'Basier Square', sans-serif;
+    text-transform: uppercase;
+    font-size: 1.5em;
+    margin-bottom: .5em;
+}
+
+.intro{
+    font-size: 2.5em;
+    color: $black;
+    margin-top: 0;
+}
+
+@keyframes slideIn{
+    0%{
+        left: 100%;
+    }
+    100%{
+        left: 10%;
+    }
+}
+
+@keyframes slideOut{
+    0%{
+        left: 10%;
+    }
+    100%{
+        left: 100%;
+    }
+}
+
+@keyframes fadeIn{
+    0%{
+        opacity: 0%;
+    }
+    100%{
+        opacity: 50%;
+    }
+}
+
+@keyframes fadeOut{
+    0%{
+        opacity: 50%;
+    }
+    100%{
+        opacity: 0%;
+    }
 }

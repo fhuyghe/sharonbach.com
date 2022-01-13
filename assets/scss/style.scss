@@ -9,15 +9,11 @@ body {
   font-size: 20px;
 }
 
-body.project-open{
-  overflow: hidden;
+html.project-open{
+  overflow-y: overlay;
+  padding-right: 16px;
 }
 
-h1, h2{
-    font-size: 3em;
-    font-family: 'Migra';
-    line-height: 1.5em;
-  }
 
 a {
   color: inherit;
