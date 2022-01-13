@@ -31,19 +31,19 @@ const Project = ({project, isLeaving}) => {
           <p className={style.intro}>{project.attributes.intro}</p>
         {project.attributes.Content.map((section) => { 
           //Gallery of Images
-          if (section.__typename == 'ComponentContentBlockImages') return <section className="gallery">
+          if (section.__typename == 'ComponentContentBlockImages') return <section key={`gallery-${section.id}`} className="gallery">
             <div className="uk-grid uk-child-width-1-2@m">
               {section.images.data.map((image) => { return <div key={image.id}><Image image={image} /></div>})}
               </div>
           </section>
           
           // Single Image
-          if (section.__typename == 'ComponentContentBlockImage') return <section className="image">
+          if (section.__typename == 'ComponentContentBlockImage') return <section key={`image-${section.id}`} className="image">
             <Image image={section.image} />
           </section>
           
           // TEXT
-          if (section.__typename == 'ComponentContentBlockText') return <section className="text">
+          if (section.__typename == 'ComponentContentBlockText') return <section key={`text-${section.id}`} className="text">
             <ReactMarkdown>{section.text}</ReactMarkdown>
           </section>
         })}

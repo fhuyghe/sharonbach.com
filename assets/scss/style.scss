@@ -1,16 +1,18 @@
 @import './variables.scss';
+html { height: 100%; overflow:auto; }
+body { height: 100%; }
 
 html,
 body {
-    background-color: $beige;
+  background-color: $beige;
   padding: 0;
   margin: 0;
   font-family: 'Migra';
   font-size: 20px;
 }
 
-html.project-open{
-  overflow-y: overlay;
+body.project-open{
+  position: fixed;
   padding-right: 16px;
 }
 

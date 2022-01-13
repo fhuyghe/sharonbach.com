@@ -4,12 +4,11 @@ import { useRouter } from 'next/router'
 
 const Card = (props)=>{
     
-    const router = useRouter()
+  const router = useRouter()
   let project = props.project;
-  console.log(project)
   
   const openProject = (project) => {
-    document.body.classList.add('project-open');
+    document.body.style.top = `-${window.scrollY}px`;
     router.push(project.attributes.slug && `?project=${project.attributes.slug}`)
   }
 

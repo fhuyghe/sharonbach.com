@@ -29,9 +29,11 @@ const ProjectWrap = (props) => {
               Content{
                 __typename
                   ... on ComponentContentBlockText{
+                    id
                     text
                 }
                 ... on ComponentContentBlockImage{
+                  id
                   image{
                     data{
                       id
@@ -46,6 +48,7 @@ const ProjectWrap = (props) => {
                   }
                 }
                 ... on ComponentContentBlockImages{
+                  id
                   columns
                   images{
                     data{
@@ -66,8 +69,8 @@ const ProjectWrap = (props) => {
     }
 }
   `, { variables: { slug: props.slug } });
-  if (loading) return <p>Loading...</p>;
-  if (error) return 'Error';
+  if (loading) return '';
+  if (error) return '';
 
   
   const project = data.projects.data[0];
@@ -77,7 +80,6 @@ const ProjectWrap = (props) => {
   const closeProject = () => {
     setLeaving(true)
     setTimeout(() => { 
-      document.body.classList.remove('project-open');
       router.push('/', '')
     }, 500)
   }

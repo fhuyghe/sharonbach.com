@@ -15,8 +15,14 @@ export default function Home(props) {
   const [featuredProject, setFeaturedProject] = useState(router.query.project);
 
   useEffect(() => {
+    //Disable scrolling of body
+    const scrollY = document.body.style.top;
+    document.body.classList.toggle('project-open', router.query.project || false);
+    if (!router.query.project && scrollY) { 
+        document.body.style.top = '';
+        window.scroll(0, parseInt(scrollY || "0") * -1);
+    }
     setFeaturedProject(router.query.project)
-    document.body.classList.toggle('project-open', router.query.project);
   }, [router.query])
 
   const { loading, error, data } = useQuery(gql`
