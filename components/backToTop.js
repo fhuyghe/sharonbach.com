@@ -1,5 +1,5 @@
-import style from '../assets/scss/backToTop.module.scss'
-import { useState, useEffect } from 'react'
+import style from '../assets/scss/BackToTop.module.scss'
+import { useState } from 'react'
 
 const BackToTop = () => { 
     const scrollThreshold = 200
