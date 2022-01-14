@@ -1,10 +1,12 @@
 import App from "next/app";
-import Head from "next/head";
+import { DefaultSeo } from "next-seo"
+import Head from "next/head"
 import Script from 'next/script'
 import "../assets/scss/style.scss";
 import { createContext } from "react";
 import { getStrapiMedia } from "../lib/media";
 import { fetchAPI } from "../lib/api";
+import Seo from "../components/seo";
 import {
   ApolloClient,
   InMemoryCache,
@@ -23,6 +25,13 @@ export const GlobalContext = createContext({});
 const MyApp = ({ Component, pageProps }) => {
   const { global } = pageProps;
 
+    //SEO
+  const metadata = {
+    metaTitle: global.data.attributes.websiteName,
+    metaDescription: global.data.attributes.description,
+    shareImage: global.data.attributes.shareImage,
+  };
+
   return (
     <>
       <Head>
@@ -31,10 +40,25 @@ const MyApp = ({ Component, pageProps }) => {
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/uikit@3.2.3/dist/css/uikit.min.css"
         />
-        <title>{global.data.attributes.websiteName}</title>
-        <meta name="description" content={global.data.attributes.description} />
-        <link rel="icon" href={getStrapiMedia(global.data.attributes.favicon)} />
       </Head>
+      <DefaultSeo
+        titleTemplate={`%s | ${metadata.metaTitle}`}
+        title=" "
+        description={metadata.metaDescription}
+        openGraph={{
+          images: Object.values(metadata.shareImage.data.attributes.formats).map((image) => {
+            return {
+              url: image.url,
+              width: image.width,
+              height: image.height,
+            }
+          }),
+        }}
+        twitter={{
+          cardType: metadata.twitterCardType,
+          handle: metadata.twitterUsername,
+        }}
+      />
       
       
       <Script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.min.js" />

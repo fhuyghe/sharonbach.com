@@ -17,7 +17,7 @@ const Project = ({project, isLeaving}) => {
 
   return (
     <div className={isLeaving ? style.projectBlockLeaving : style.projectBlock}>
-        <Seo seo={seo} />
+        <Seo metadata={seo} />
         <div className={style.projectWrap}>
           <div className="uk-container"> 
             {categories &&
