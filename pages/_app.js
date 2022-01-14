@@ -43,7 +43,8 @@ const MyApp = ({ Component, pageProps }) => {
       </Head>
       <DefaultSeo
         titleTemplate={`%s | ${metadata.metaTitle}`}
-        title=" "
+        title={undefined}
+        defaultTitle={metadata.metaTitle}
         description={metadata.metaDescription}
         openGraph={{
           images: Object.values(metadata.shareImage.data.attributes.formats).map((image) => {
