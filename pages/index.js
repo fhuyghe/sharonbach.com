@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react'
-import Projects from '../components/projects'
-import Tag from '../components/tag'
 import styles from '../assets/scss/Home.module.scss'
-import ProjectWrap from '../components/project-wrap'
 import ReactMarkdown from 'react-markdown'
 import { useQuery, gql } from "@apollo/client";
 import { useRouter } from 'next/router'
+
+//components
+import ProjectWrap from '../components/project-wrap'
+import Projects from '../components/projects'
+import Tag from '../components/tag'
+import BackToTop from '../components/backToTop';
 
 export default function Home({global}) {
   //State Hook
@@ -85,6 +88,8 @@ export default function Home({global}) {
             </div>
           </div>
         </section>
+        
+        <BackToTop />      
 
       </main>
     </div>
