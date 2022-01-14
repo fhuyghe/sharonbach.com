@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import { useState, useEffect } from 'react'
 import Projects from '../components/projects'
 import Tag from '../components/tag'
@@ -7,10 +6,8 @@ import ProjectWrap from '../components/project-wrap'
 import ReactMarkdown from 'react-markdown'
 import { useQuery, gql } from "@apollo/client";
 import { useRouter } from 'next/router'
-import { getStrapiMedia } from "../lib/media";
 
 export default function Home({global}) {
- console.log(global)
   //State Hook
   const router = useRouter()
   const [featuredProject, setFeaturedProject] = useState(router.query.project);
@@ -50,12 +47,6 @@ export default function Home({global}) {
 
   return (
     <div className={styles.container}>
-      <Head>
-        <title>{global.data.attributes.websiteName}</title>
-        <meta name="description" content={global.data.attributes.description} />
-        <link rel="icon" href={getStrapiMedia(global.data.attributes.favicon)} />
-      </Head>
-
       <main className={styles.main}>
 
         {/* Projects */}
