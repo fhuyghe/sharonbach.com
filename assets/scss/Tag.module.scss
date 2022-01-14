@@ -1,19 +1,27 @@
 @import './variables.scss';
 
 .tagWrap{
-    // animation: y 5s linear infinite alternate;
     position: absolute;
   }
+
+  $percents: 12% 66% 32% 50% 24%;
+@each $percent in $percents {
+  .tagWrap:nth-child(#{index($percents, $percent)}) {
+    position: absolute;
+    top: calc(5em * index($percents, $percent));
+    left: $percent;
+  }
+}
+
   .tag { 
     text-transform: uppercase;
-    font-size: 1.5em;
+    font-size: 1.2em;
     background: $beige;
-    border: 2px solid $black;
+    border: 1px solid $black;
     display: inline-block;
-    padding: 10px 20px;
+    padding: 5px 20px;
     border-radius: 2em;
     white-space: nowrap;
-    // animation: x 5s linear infinite alternate;
   }
   
   

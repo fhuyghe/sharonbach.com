@@ -1,6 +1,7 @@
 import React from "react";
-import Image from "./image";
 import { useRouter } from 'next/router'
+import styles from '../assets/scss/Card.module.scss'
+import Image from "./image";
 
 const Card = (props)=>{
     
@@ -19,8 +20,8 @@ const Card = (props)=>{
             <div className="uk-card-media-top"><Image image={project.attributes.featuredImage} /></div>
           </div>
           <div className="caption">
-            <h3 className="title">{project.attributes.title}</h3>
-            <div className="blurb">{project.attributes.blurb}</div>
+            <h3 className={styles.projectTitle}>{project.attributes.title}</h3>
+            <div className={styles.projectBlurb}>{project.attributes.blurb}</div>
           </div>
         </a>
       </div>

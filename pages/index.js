@@ -51,31 +51,30 @@ export default function Home({global}) {
   return (
     <div className={styles.container}>
       <main className={styles.main}>
+          <div className="uk-container">
 
-        {/* Projects */}
+        {/* Intro */}
         <section id="intro">
-          <h1 className={styles.title}>{home.intro}</h1>
-          <Tag>Mural</Tag>
-          <Tag>Interface</Tag>
-          <Tag>Packaging</Tag>
-          <Tag>Branding</Tag>
-          <Tag>Web design</Tag>
+            <h1 className={styles.intro}>{home.intro}</h1>
+            <div className="tags">
+              <Tag>Mural</Tag>
+              <Tag>Interface</Tag>
+              <Tag>Packaging</Tag>
+              <Tag>Branding</Tag>
+              <Tag>Web design</Tag>
+            </div>
         </section>
 
         {/* Projects */}
-        <section id="bottomSection">
-          <div className="uk-container">
-            <h2 className={styles.title}>Projects</h2>
+        <section className={styles.projects}>
             <Projects setFeaturedProject={setFeaturedProject}/>
-          </div>
         </section>
 
         {/* Open Project */}
         {featuredProject && <ProjectWrap slug={featuredProject} />}
 
         {/* Bottom */}
-        <section id="bottomSection">
-          <div className="uk-container">
+          <section className={styles.about}>
             <div className="uk-grid uk-child-width-1-2@m">
               <div id="bio">
                 <h2 className={styles.title}>About</h2>
@@ -86,11 +85,10 @@ export default function Home({global}) {
                 <ReactMarkdown>{home.clients}</ReactMarkdown>
               </div>
             </div>
-          </div>
         </section>
-        
-        <BackToTop />      
 
+        <BackToTop />      
+      </div>
       </main>
     </div>
   )

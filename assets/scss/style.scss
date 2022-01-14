@@ -7,7 +7,7 @@ body {
   background-color: $beige;
   padding: 0;
   margin: 0;
-  font-family: 'Migra';
+  font-family: 'SFProDisplay';
   font-size: 20px;
 }
 
@@ -16,23 +16,22 @@ body.project-open{
   padding-right: 16px;
 }
 
+.uk-container{
+  max-width: 1500px;
+}
+
 
 a {
   color: inherit;
   text-decoration: none;
 }
 
-* {
-  box-sizing: border-box;
+h2{
+  margin-bottom: 0;
 }
 
-//Card
-.project-card{
-  h3, .blurb{
-    font-size: 1.3em;
-    font-weight: 500;
-    font-family: 'Migra';
-  }
+* {
+  box-sizing: border-box;
 }
 
 //Home Page

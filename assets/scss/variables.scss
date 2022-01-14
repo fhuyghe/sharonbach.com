@@ -5,19 +5,19 @@ $grid-gutter: 50px;
 
   /* Font */
   @font-face {
-    font-family: 'Basier Square';
-    src: url('../fonts/BasierSquare-Regular.woff2') format('woff2'),
-        url('../fonts/BasierSquare-Regular.woff') format('woff');
-    font-weight: normal;
+    font-family: 'SFProDisplay';
+    src: url('../fonts/SFProDisplay-Light.woff2') format('woff2'),
+        url('../fonts/SFProDisplay-Light.woff') format('woff');
+    font-weight: lighter;
     font-style: normal;
     font-display: swap;
   }
   
   @font-face {
-    font-family: 'Migra';
-    src: url('../fonts/Migra-Extralight.woff2') format('woff2'),
-        url('../fonts/Migra-Extralight.woff') format('woff');
-    font-weight: normal;
+    font-family: 'Cirka';
+    src: url('../fonts/PPCirka-Light.woff2') format('woff2'),
+        url('../fonts/PPCirka-Light.woff') format('woff');
+    font-weight: lighter;
     font-style: normal;
     font-display: swap;
   }

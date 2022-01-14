@@ -1,0 +1,19 @@
+@import './variables.scss';
+
+.card{
+    &:nth-child(2){
+      margin-top: calc($grid-gutter * 2)
+    }
+}
+.projectTitle{
+  font-size: 1.4em;
+  font-family: 'Cirka';
+  margin-bottom: 0;
+}
+
+.projectBlurb{
+  font-family: 'Cirka';
+  font-size: 1.3em;
+  line-height: 1em;
+    margin-top: 0;
+}
