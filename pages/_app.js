@@ -5,7 +5,6 @@ import "../assets/scss/style.scss";
 import { createContext } from "react";
 import { getStrapiMedia } from "../lib/media";
 import { fetchAPI } from "../lib/api";
-import { useRouter } from 'next/router'
 import {
   ApolloClient,
   InMemoryCache,
@@ -24,12 +23,10 @@ export const GlobalContext = createContext({});
 const MyApp = ({ Component, pageProps }) => {
   const { global } = pageProps;
 
-  const router = useRouter()
-
   return (
     <>
       <Head>
-        {/* <link rel="shortcut icon" href={getStrapiMedia(global.data.attributes.Favicon)} /> */}
+        <link rel="shortcut icon" href={getStrapiMedia(global.data.attributes.favicon)} />
         <link
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/uikit@3.2.3/dist/css/uikit.min.css"
@@ -42,7 +39,7 @@ const MyApp = ({ Component, pageProps }) => {
 
       <GlobalContext.Provider value={global}>
         <ApolloProvider client={client}>
-          <Component {...pageProps} query={router.query} />
+          <Component {...pageProps} />
         </ApolloProvider>
       </GlobalContext.Provider>
     </>
