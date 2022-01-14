@@ -10,8 +10,8 @@ const Project = ({project, isLeaving}) => {
 
   const seo = {
     metaTitle: project.attributes.title,
-    metaDescription: project.description,
-    shareImage: project.image,
+    metaDescription: project.attributes.intro,
+    shareImage: project.attributes.featuredImage,
     project: true,
   };
 
