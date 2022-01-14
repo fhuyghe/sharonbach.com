@@ -18,10 +18,13 @@ export default function Home(props) {
     //Disable scrolling of body
     const scrollY = document.body.style.top;
     document.body.classList.toggle('project-open', router.query.project || false);
+
+    // If the project is closing, rescroll
     if (!router.query.project && scrollY) { 
         document.body.style.top = '';
         window.scroll(0, parseInt(scrollY || "0") * -1);
     }
+
     setFeaturedProject(router.query.project)
   }, [router.query])
 
