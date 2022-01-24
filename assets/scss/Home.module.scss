@@ -23,7 +23,7 @@
   font-size: 1.5em;
   font-family: 'Cirka';
   line-height: .5em;
-  margin-top: $grid-gutter / 2;
+  margin-top: calc($grid-gutter / 2);
 
   @media (min-width: $medium) {
     font-size: 3em;

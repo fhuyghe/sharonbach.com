@@ -1,12 +1,10 @@
-import App from "next/app";
+import App from 'next/app'
 import { DefaultSeo } from "next-seo"
 import Head from "next/head"
 import Script from 'next/script'
 import "../assets/scss/style.scss";
 import { createContext } from "react";
-import { getStrapiMedia } from "../lib/media";
-import { fetchAPI } from "../lib/api";
-import Seo from "../components/seo";
+import {fetchAPI} from '../lib/api'
 import {
   ApolloClient,
   InMemoryCache,
@@ -35,7 +33,10 @@ const MyApp = ({ Component, pageProps }) => {
   return (
     <>
       <Head>
-        <link rel="shortcut icon" href={getStrapiMedia(global.data.attributes.favicon)} />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="manifest" href="/site.webmanifest" />
         <link
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/uikit@3.2.3/dist/css/uikit.min.css"
