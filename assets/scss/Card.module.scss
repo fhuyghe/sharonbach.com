@@ -6,14 +6,22 @@
     }
 }
 .projectTitle{
-  font-size: 1.4em;
+  font-size: 1.2em;
   font-family: 'Cirka';
   margin-bottom: 0;
+  
+  @media (min-width: $medium) {
+    font-size: 1.4em;
+  }
 }
 
 .projectBlurb{
   font-family: 'Cirka';
-  font-size: 1.3em;
+  font-size: 1em;
   line-height: 1em;
     margin-top: 0;
+
+    @media (min-width: $medium) {
+      font-size: 1.3em;
+    }
 }

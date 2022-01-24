@@ -2,26 +2,58 @@
 
 .projectBlock{
     position: fixed;
-    width: 90%;
+    width: 100%;
     top: 0;
     left: 100%;
     min-height: 100vh;
-    border-left: 3px solid $black;
+    border-left: 1px solid $black;
     background: $beige;
     z-index: 99;
     overflow-y: auto;
-    animation: slideIn .5s ease-in-out forwards;
+    animation: slideInMobile .5s ease-in-out forwards;
+    
+    @media (min-width: $medium) {
+        animation: slideIn .5s ease-in-out forwards;
+        font-size: 1.2em;
+        width: 90%;
+        border-left: 3px solid $black;
+    }
 }
 
 .projectBlockLeaving{
     @extend .projectBlock;
-    animation: slideOut .5s ease-in-out forwards;
+    animation: slideOutMobile .5s ease-in-out forwards;
+    
+    @media (min-width: $medium) {
+        animation: slideOut .5s ease-in-out forwards;
+    }
+}
+
+.projectClose{
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 99;
+    transition: .25s;
+
+    &:hover{
+        transform: scale(1.1);
+    }
+}
+
+.projectCloseLeaving{
+    @extend .projectClose;
+    opacity: 0;
 }
 
 .projectWrap{
     position: absolute;
-    padding: $grid-gutter;
+    padding: calc($grid-gutter / 2);
     width: 100%;
+
+    @media (min-width: $medium) {
+        padding: $grid-gutter;
+    }
 }
 
 .projectBackground{
@@ -43,13 +75,18 @@
 
 .projectCategory{
     text-transform: uppercase;
-    font-size: 1.2em;
+    font-size: .8em;
     background: $beige;
     border: 1px solid $black;
     display: inline-block;
-    padding: 5px 20px;
+    padding: 2px 10px;
     border-radius: 2em;
     white-space: nowrap;
+    
+    @media (min-width: $medium) {
+        font-size: 1.2em;
+        padding: 5px 20px;
+      }
 }
 
 .gallerySection{
@@ -59,9 +96,11 @@
     margin-bottom: $grid-gutter;
 }
 .textSection{
+    font-family: 'Cirka';
     margin-bottom: $grid-gutter;
 
     h1, h2{
+        font-family: 'Cirka';
         margin-top: 0;
     }
 }
@@ -69,15 +108,23 @@
 .title{
     text-transform: uppercase;
     font-weight: 300;
-    font-size: 1.3em;
+    font-size: .8em;
     margin-bottom: .3em;
+
+    @media (min-width: $medium) {
+        font-size: 1.3em;
+    }
 }
 
 .intro{
     font-family: 'Cirka';
-    font-size: 2.3em;
+    font-size: 1.5em;
     color: $black;
     margin-top: 0;
+
+    @media (min-width: $medium) {
+        font-size: 2.3em;
+    }
 }
 
 @keyframes slideIn{
@@ -92,6 +139,24 @@
 @keyframes slideOut{
     0%{
         left: 10%;
+    }
+    100%{
+        left: 100%;
+    }
+}
+
+@keyframes slideInMobile{
+    0%{
+        left: 100%;
+    }
+    100%{
+        left: 0;
+    }
+}
+
+@keyframes slideOutMobile{
+    0%{
+        left: 0;
     }
     100%{
         left: 100%;

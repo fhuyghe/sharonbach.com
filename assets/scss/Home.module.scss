@@ -10,15 +10,24 @@
 }
 
 .intro {
-  font-size: 3.5em;
+  font-size: 1.5em;
   font-family: 'Cirka';
   line-height: 1.4em;
+  
+  @media (min-width: $medium) {
+    font-size: 3.5em;
+  }
 }
 
 .title {
-  font-size: 3em;
+  font-size: 1.5em;
   font-family: 'Cirka';
   line-height: .5em;
+  margin-top: $grid-gutter / 2;
+
+  @media (min-width: $medium) {
+    font-size: 3em;
+  }
 }
 
 .projects{

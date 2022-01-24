@@ -13,7 +13,10 @@ body {
 
 body.project-open{
   position: fixed;
-  padding-right: 16px;
+
+  @media (min-width: $medium){
+    padding-right: 16px;
+  }
 }
 
 .uk-container{

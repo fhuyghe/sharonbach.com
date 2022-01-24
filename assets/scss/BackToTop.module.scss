@@ -2,18 +2,29 @@
 
 .backButton{
     position: fixed;
-    bottom: calc($grid-gutter / 2);
-    right: calc($grid-gutter / 2);
-    width: 100px;
-    height: 100px;
+    bottom: calc($grid-gutter / 3);
+    right: calc($grid-gutter / 3);
+    width: 70px;
+    height: 70px;
     display: flex;
     align-items: center;
     cursor: pointer;
     justify-content: center;
     transition: .5s;
+    
+    @media (min-width: $medium) {
+        width: 100px;
+        height: 100px;
+        bottom: calc($grid-gutter / 2);
+        right: calc($grid-gutter / 2);
+    }
 }
 
 .backButtonHidden{
     @extend .backButton;
-    bottom: -100px;
+    bottom: -70px;
+    
+    @media (min-width: $medium) {
+        bottom: -100px;
+    }
 }
