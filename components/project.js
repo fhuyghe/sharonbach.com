@@ -30,9 +30,9 @@ const Project = ({project, isLeaving}) => {
           <h1 className={styles.title}>{project.attributes.title}</h1>
           <p className={styles.intro}>{project.attributes.intro}</p>
         {project.attributes.Content.map((section) => { 
-          //Gallery of Images
+          //Gallery of Images 
           if (section.__typename == 'ComponentContentBlockImages') return <section key={`gallery-${section.id}`} className={styles.gallerySection}>
-            <div className="uk-grid uk-child-width-1-2@m">
+            <div className={section.columns == "three" ? "uk-grid uk-child-width-1-3@m" : section.columns == "two" ? "uk-grid uk-child-width-1-2@m" : ''}>
               {section.images.data.map((image) => { return <div key={image.id}><Image image={image} /></div>})}
               </div>
           </section>

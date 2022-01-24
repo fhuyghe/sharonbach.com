@@ -14,7 +14,7 @@ const Card = (props)=>{
   }
 
     return (
-      <div className="project-card" onClick={() => openProject(project)}>
+      <div className={styles.projectCard} onClick={() => openProject(project)}>
         <a className="uk-link-reset">
           <div className="uk-card uk-card-muted">
             <div className="uk-card-media-top"><Image image={project.attributes.featuredImage} /></div>

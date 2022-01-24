@@ -4,7 +4,7 @@
     position: fixed;
     width: 100%;
     top: 0;
-    left: 100%;
+    right: -100%;
     min-height: 100vh;
     border-left: 1px solid $black;
     background: $beige;
@@ -16,6 +16,7 @@
         animation: slideIn .5s ease-in-out forwards;
         font-size: 1.2em;
         width: 90%;
+        max-width: 1200px;
         border-left: 3px solid $black;
     }
 }
@@ -31,10 +32,17 @@
 
 .projectClose{
     position: fixed;
+    width: 40px;
     top: 10px;
     right: 10px;
     z-index: 99;
+    cursor: pointer;
     transition: .25s;
+    
+    @media (min-width: $medium) {
+        width: 50px;
+        right: 25px;
+    }
 
     &:hover{
         transform: scale(1.1);
@@ -56,6 +64,14 @@
 
     @media (min-width: $medium) {
         padding: $grid-gutter;
+    }
+}
+
+.projectCard{
+    margin-top: $grid-gutter;
+
+    &:nth-child(2n+1){
+        transform: translateY(150px)!important;
     }
 }
 
@@ -87,8 +103,8 @@
     white-space: nowrap;
     
     @media (min-width: $medium) {
-        font-size: 1.2em;
-        padding: 5px 20px;
+        font-size: .9em;
+        padding: 2px 20px;
       }
 }
 
@@ -132,19 +148,19 @@
 
 @keyframes slideIn{
     0%{
-        left: 100%;
+        right: -90%;
     }
     100%{
-        left: 10%;
+        right: 0%;
     }
 }
 
 @keyframes slideOut{
     0%{
-        left: 10%;
+        right: 0;
     }
     100%{
-        left: 100%;
+        right: -90%;
     }
 }
 
