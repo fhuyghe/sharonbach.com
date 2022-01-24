@@ -1,4 +1,6 @@
 import style from '../assets/scss/BackToTop.module.scss'
+import Image from 'next/image'
+import backToTopIcon from '../assets/images/icon-backtotop.svg'
 import { useState } from 'react'
 
 const BackToTop = () => { 
@@ -15,7 +17,12 @@ const BackToTop = () => {
     
     console.log(displayButton)
     return <div id="backToTop" className={displayButton ? style.backButton : style.backButtonHidden} onClick={scrollToTop}>
-        Back
+        <Image
+            src={backToTopIcon}
+            alt="Back to top"
+            width="100"
+            height="100"
+        ></Image>
     </div>
 }
 
