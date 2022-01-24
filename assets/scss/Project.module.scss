@@ -50,6 +50,9 @@
     position: absolute;
     padding: calc($grid-gutter / 2);
     width: 100%;
+    max-width: 1000px;
+    left: 50%;
+    transform: translateX(-50%);
 
     @media (min-width: $medium) {
         padding: $grid-gutter;
