@@ -67,14 +67,6 @@
     }
 }
 
-.projectCard{
-    margin-top: $grid-gutter;
-
-    &:nth-child(2n+1){
-        transform: translateY(150px)!important;
-    }
-}
-
 .projectBackground{
     position: fixed;
     width: 100%;

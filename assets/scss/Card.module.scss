@@ -1,9 +1,11 @@
 @import './variables.scss';
 
-.card{
-    &:nth-child(2){
-      margin-top: calc($grid-gutter * 2)
-    }
+.projectCard{
+  margin-top: $grid-gutter;
+
+  &:nth-child(2){
+      padding-top: 150px;
+  }
 }
 .projectTitle{
   font-size: 1.2em;
