@@ -2,15 +2,16 @@
 
 .tagWrap{
     position: absolute;
+    width: 200px;
+    overflow: hidden;
   }
-
-  $percents: 12% 66% 32% 50% 24%;
-
-  @each $percent in $percents {
-    .tagWrap:nth-child(#{index($percents, $percent)}) {
-      position: absolute;
-      top: calc(5em * index($percents, $percent));
-      left: $percent;
+  
+  $durations: 6s 8s, 8s 5s, 6.5s 6s, 5s 7s, 4.5s 9s;
+  
+  @each $duration in $durations {
+    .tagWrap:nth-child(#{index($durations, $duration)}) {
+      animation: moveX #{nth($duration, 1)} linear 0s infinite alternate, moveY #{nth($duration, 2)} linear 0s infinite alternate;
+      animation-delay: -4s;
     }
   }
 
@@ -29,15 +30,10 @@
     }
   }
   
-  
-  @keyframes x {
-    100% {
-      transform: translateX(calc(100vw - 100px));
-    }
+  @keyframes moveX {
+    from { left: 0; } to { left: calc(100% - 200px); }
   }
   
-  @keyframes y {
-    100% {
-      transform: translateY(1000px);
-    }
+  @keyframes moveY {
+    from { top: 0; } to { top: calc(100% - 20px); }
   }
