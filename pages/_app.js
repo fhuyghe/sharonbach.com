@@ -1,10 +1,13 @@
 import App from 'next/app'
+import {useEffect} from 'react'
+import { useRouter } from 'next/router'
 import { DefaultSeo } from "next-seo"
 import Head from "next/head"
 import Script from 'next/script'
 import "../assets/scss/style.scss";
 import { createContext } from "react";
-import {fetchAPI} from '../lib/api'
+import { fetchAPI } from '../lib/api'
+import ga from '../lib/ga'
 import {
   ApolloClient,
   InMemoryCache,
@@ -22,6 +25,7 @@ export const GlobalContext = createContext({});
 
 const MyApp = ({ Component, pageProps }) => {
   const { global } = pageProps;
+  const router = useRouter()
 
     //SEO
   const metadata = {
@@ -29,6 +33,22 @@ const MyApp = ({ Component, pageProps }) => {
     metaDescription: global.data.attributes.description,
     shareImage: global.data.attributes.shareImage,
   };
+
+  //GA page tracking
+  useEffect(() => {
+    const handleRouteChange = (url) => {
+      ga.pageview(url)
+    }
+    //When the component is mounted, subscribe to router changes
+    //and log those page views
+    router.events.on('routeChangeComplete', handleRouteChange)
+
+    // If the component is unmounted, unsubscribe
+    // from the event with the `off` method
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange)
+    }
+  }, [router.events])
 
   return (
     <>
@@ -41,6 +61,15 @@ const MyApp = ({ Component, pageProps }) => {
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/uikit@3.2.3/dist/css/uikit.min.css"
         />
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y001TKEJ77"></script>
+        <script dangerouslySetInnerHTML={{
+          __html: `
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        gtag('config', '${process.env.GOOGLE_ANALYTICS}');
+          `
+        }} />
       </Head>
       <DefaultSeo
         titleTemplate={`%s | ${metadata.metaTitle}`}
