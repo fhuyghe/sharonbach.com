@@ -14,11 +14,10 @@
   
   @each $duration in $durations {
     .tagWrap:nth-child(#{index($durations, $duration)}) {
-      animation: moveXmobile #{nth($duration, 1)} linear 0s infinite alternate, moveY #{nth($duration, 2)} linear 0s infinite alternate;
-      animation-delay: -4s;
+      animation: moveXmobile #{nth($duration, 1)} linear -10s infinite alternate, moveY #{nth($duration, 2)} linear -10s infinite alternate;
       
       @media (min-width: $medium) {
-        animation: moveX #{nth($duration, 3)} linear 0s infinite alternate, moveY #{nth($duration, 4)} linear 0s infinite alternate;
+        animation: moveX #{nth($duration, 3)} linear -10s infinite alternate, moveY #{nth($duration, 4)} linear -10s infinite alternate;
       }
     }
   }
