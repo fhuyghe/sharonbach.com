@@ -58,7 +58,7 @@ export default function Home({global}) {
             <h1 className={styles.intro}>{home.intro}</h1>
             <div className="tags">
               <Tag>Mural</Tag>
-              <Tag>Interface</Tag>
+              <Tag>Interactivity</Tag>
               <Tag>Packaging</Tag>
               <Tag>Branding</Tag>
               <Tag>Web design</Tag>
