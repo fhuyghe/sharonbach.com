@@ -78,11 +78,11 @@ export default function Home({global}) {
             <div className="uk-grid uk-child-width-1-2@m">
               <div id="bio">
                 <h2 className={styles.title}>About</h2>
-                <ReactMarkdown>{home.about}</ReactMarkdown>
+                <ReactMarkdown linkTarget="_blank">{home.about}</ReactMarkdown>
               </div>
               <div id="clients">
                 <h2 className={styles.title}>Clients</h2>
-                <ReactMarkdown>{home.clients}</ReactMarkdown>
+                <ReactMarkdown linkTarget="_blank">{home.clients}</ReactMarkdown>
               </div>
             </div>
         </section>

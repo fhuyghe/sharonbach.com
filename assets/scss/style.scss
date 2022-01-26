@@ -31,6 +31,23 @@ body.project-open{
 a {
   color: inherit;
   text-decoration: none;
+
+  &:hover{
+    text-decoration: none;
+    color: inherit
+  }
+}
+
+p{
+  a{
+    border-bottom: 1px solid $grey;
+    display: inline-block;
+    line-height: .6em;
+
+    &:hover{
+      border-bottom-style: dotted;
+    }
+  }
 }
 
 h2{

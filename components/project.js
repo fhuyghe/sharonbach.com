@@ -44,7 +44,7 @@ const Project = ({project, isLeaving}) => {
           
           // TEXT
           if (section.__typename == 'ComponentContentBlockText') return <section key={`text-${section.id}`} className={styles.textSection}>
-            <ReactMarkdown>{section.text}</ReactMarkdown>
+            <ReactMarkdown linkTarget="_blank">{section.text}</ReactMarkdown>
           </section>
         })}
       </div>
