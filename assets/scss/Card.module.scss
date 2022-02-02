@@ -3,6 +3,10 @@
 .projectCard{
   margin-top: $grid-gutter;
 
+  &:first-child{
+    margin-top: 0;
+  }
+
   &:nth-child(2){
     @media (min-width: $medium) {
       padding-top: 150px;

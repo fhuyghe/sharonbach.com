@@ -7,7 +7,7 @@ import Script from 'next/script'
 import "../assets/scss/style.scss";
 import { createContext } from "react";
 import { fetchAPI } from '../lib/api'
-import ga from '../lib/ga'
+import * as ga from '../lib/ga'
 import {
   ApolloClient,
   InMemoryCache,

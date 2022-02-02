@@ -15,7 +15,6 @@ const BackToTop = () => {
         window.scrollTo({top: 0, behavior: 'smooth'});
     }
     
-    console.log(displayButton)
     return <div id="backToTop" className={displayButton ? style.backButton : style.backButtonHidden} onClick={scrollToTop}>
         <Image
             src={backToTopIcon}

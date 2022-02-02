@@ -31,10 +31,22 @@
 }
 
 .projects{
-  margin: calc($grid-gutter * 2) 0;
+  margin: 0;
+  
+  @media (min-width: $medium) {
+    margin: $grid-gutter 0;
+  }
 }
 
 .about{
-  margin-top: calc($grid-gutter * 2);
+  margin-top: calc($grid-gutter / 2);
   font-family: 'Cirka';
+  
+  @media (min-width: $medium) {
+    margin-top: calc($grid-gutter * 2);
+  }
+  
+  h2{
+    margin-top: calc($grid-gutter);
+  }
 }

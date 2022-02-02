@@ -2,7 +2,7 @@
 
 .tagWrap{
     position: absolute;
-    width: 120px;
+    width: 130px;
     overflow: hidden;
     
     @media (min-width: $medium) {
@@ -14,7 +14,7 @@
   
   @each $duration in $durations {
     .tagWrap:nth-child(#{index($durations, $duration)}) {
-      animation: moveXmobile #{nth($duration, 1)} linear -10s infinite alternate, moveY #{nth($duration, 2)} linear -10s infinite alternate;
+      animation: moveXmobile #{nth($duration, 1)} linear -20s infinite alternate, moveY #{nth($duration, 2)} linear -20s infinite alternate;
       
       @media (min-width: $medium) {
         animation: moveX #{nth($duration, 3)} linear -10s infinite alternate, moveY #{nth($duration, 4)} linear -10s infinite alternate;
@@ -33,6 +33,7 @@
     white-space: nowrap;
     
     @media (min-width: $medium) {
+      padding: 2px 20px;
       font-size: 1.2em;
     }
   }
