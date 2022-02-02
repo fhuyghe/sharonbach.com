@@ -104,13 +104,13 @@
 
 .gallerySection{
     margin: calc($grid-gutter / 2) 0;
+}
 
-    .uk-grid > div{
-        margin-bottom: 25px;
+.galleryColumn{
+    margin-bottom: 25px;
 
-        @media (min-width: $medium) {
-            margin-bottom: 0;
-        }
+    @media (min-width: $medium) {
+        margin-bottom: 0;
     }
 }
 
