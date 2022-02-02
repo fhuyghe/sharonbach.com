@@ -107,7 +107,11 @@
 }
 
 .galleryColumn{
-    margin-bottom: 25px;
+    margin-bottom: $grid-gutter;
+
+    &:last-child{
+        margin-bottom: 0;
+    }
 
     @media (min-width: $medium) {
         margin-bottom: 0;
