@@ -1,24 +1,25 @@
-import { useState, useEffect } from 'react'
-import styles from '../assets/scss/Home.module.scss'
-import ReactMarkdown from 'react-markdown'
-import { useQuery, gql } from "@apollo/client";
+import { useParams } from 'next/navigation';
 import { useRouter } from 'next/router'
+import { useEffect} from 'react'
+import ReactMarkdown from 'react-markdown'
 
-//components
-import ProjectWrap from '../components/project-wrap'
-import Projects from '../components/projects'
-import Tag from '../components/tag'
-import BackToTop from '../components/backToTop';
+import styles from '../assets/scss/Home.module.scss' 
+import BackToTop from '../components/BackToTop';
+import Projects from '../components/Projects'
+import ProjectWrap from '../components/ProjectWrap'
+import Tag from '../components/Tag'
+import { useGetPageHomeQuery } from "../generated/graphql";
 
-export default function Home({global}) {
+
+export default function Home() {
   //State Hook
   const router = useRouter()
-  const [featuredProject, setFeaturedProject] = useState(router.query.project);
+  const {slug: slugs} = useParams<{slug: string[]}>()
 
   useEffect(() => {
     //Disable scrolling of body
     const scrollY = document.body.style.top;
-    document.body.classList.toggle('project-open', router.query.project || false);
+    document.body.classList.toggle('project-open', !!router.query.project || false);
 
     // If the project is closing, rescroll
     if (!router.query.project && scrollY) { 
@@ -26,28 +27,17 @@ export default function Home({global}) {
         window.scroll(0, parseInt(scrollY || "0") * -1);
     }
 
-    setFeaturedProject(router.query.project)
+    // setFeaturedProject(router.query.project)
   }, [router.query])
 
-  const { loading, error, data } = useQuery(gql`
-  query{
-    home{
-        data { 
-        attributes{
-            about
-            intro
-            clients
-          }
-        }
-      }
-    }
-    `);
+  
+  const { loading, error, data } = useGetPageHomeQuery();
     if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error :(</p>;
+    if (error) return <p>Error :</p>;
     
-  const home = data.home.data ? data.home.data.attributes : {};
+  const homeData = data.home.data.attributes
 
-
+  console.log(slugs)
   return (
     <div className={styles.container}>
       <main className={styles.main}>
@@ -55,9 +45,8 @@ export default function Home({global}) {
 
         {/* Intro */}
         <section id="intro">
-            <h1 className={styles.intro}>{home.intro}</h1>
+            <h1 className={styles.intro}>{homeData.intro}</h1>
             <div className="tags">
-              <Tag>Mural</Tag>
               <Tag>Interactivity</Tag>
               <Tag>Packaging</Tag>
               <Tag>Branding</Tag>
@@ -67,22 +56,22 @@ export default function Home({global}) {
 
         {/* Projects */}
         <section className={styles.projects}>
-            <Projects setFeaturedProject={setFeaturedProject}/>
+            <Projects />
         </section>
 
         {/* Open Project */}
-        {featuredProject && <ProjectWrap slug={featuredProject} />}
+        {slugs?.length > 0 && <ProjectWrap slug={slugs[0]} />}
 
         {/* Bottom */}
           <section className={styles.about}>
             <div className="uk-grid uk-child-width-1-2@m">
               <div id="bio">
                 <h2 className={styles.title}>About</h2>
-                <ReactMarkdown linkTarget="_blank">{home.about}</ReactMarkdown>
+                <ReactMarkdown linkTarget="_blank">{homeData.about}</ReactMarkdown>
               </div>
               <div id="clients">
                 <h2 className={styles.title}>Clients</h2>
-                <ReactMarkdown linkTarget="_blank">{home.clients}</ReactMarkdown>
+                <ReactMarkdown linkTarget="_blank">{homeData.clients}</ReactMarkdown>
               </div>
             </div>
         </section>

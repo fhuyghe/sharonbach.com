@@ -1,0 +1,15 @@
+schema: 'https://sharonbach-backend.herokuapp.com/graphql'
+documents: 'queries/**/*.graphql'
+generates:
+  generated/graphql.tsx:
+    plugins:
+      - 'typescript'
+      - 'typescript-operations'
+      - 'typescript-react-apollo'
+    config:
+      withHooks: true
+      withHOC: false
+      withComponent: false
+      avoidOptionals: true
+      preResolveTypes: true
+      dedupeFragments: true

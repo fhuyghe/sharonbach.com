@@ -1,35 +1,35 @@
-@import './variables.scss';
+@import './_variables';
 
-.projectCard{
-  margin-top: $grid-gutter;
+.projectCard {
+  margin-top: var(--width-gutter);
 
-  &:first-child{
+  &:first-child {
     margin-top: 0;
   }
 
-  &:nth-child(2){
-    @media (min-width: $medium) {
+  &:nth-child(2) {
+    @media (min-width: $widthMedium) {
       padding-top: 150px;
     }
   }
 }
-.projectTitle{
+.projectTitle {
   font-size: 1.2em;
   font-family: 'Cirka';
   margin-bottom: 0;
-  
-  @media (min-width: $medium) {
+
+  @media (min-width: $widthMedium) {
     font-size: 1.4em;
   }
 }
 
-.projectBlurb{
+.projectBlurb {
   font-family: 'Cirka';
   font-size: 1em;
   line-height: 1em;
-    margin-top: 0;
+  margin-top: 0;
 
-    @media (min-width: $medium) {
-      font-size: 1.3em;
-    }
+  @media (min-width: $widthMedium) {
+    font-size: 1.3em;
+  }
 }

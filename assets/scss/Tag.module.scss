@@ -1,51 +1,75 @@
-@import './variables.scss';
+@import './_variables';
 
-.tagWrap{
-    position: absolute;
-    width: 130px;
-    overflow: hidden;
-    
-    @media (min-width: $medium) {
-      width: 200px;
+.tagWrap {
+  position: absolute;
+  width: 130px;
+  overflow: hidden;
+
+  @media (min-width: $widthMedium) {
+    width: 200px;
+  }
+}
+
+$durations:
+  3s 4s 6s 8s,
+  4s 3s 8s 5s,
+  2.5s 3.5s 6.5s 6s,
+  3.6s 3.2s 5s 7s,
+  4.2s 3.1s 4.5s 9s;
+
+@each $duration in $durations {
+  .tagWrap:nth-child(#{index($durations, $duration)}) {
+    animation:
+      moveXmobile #{nth($duration, 1)} linear -20s infinite alternate,
+      moveY #{nth($duration, 2)} linear -20s infinite alternate;
+
+    @media (min-width: $widthMedium) {
+      animation:
+        moveX #{nth($duration, 3)} linear -10s infinite alternate,
+        moveY #{nth($duration, 4)} linear -10s infinite alternate;
     }
   }
-  
-  $durations: 3s 4s 6s 8s, 4s 3s 8s 5s, 2.5s 3.5s 6.5s 6s, 3.6s 3.2s 5s 7s, 4.2s 3.1s 4.5s 9s;
-  
-  @each $duration in $durations {
-    .tagWrap:nth-child(#{index($durations, $duration)}) {
-      animation: moveXmobile #{nth($duration, 1)} linear -20s infinite alternate, moveY #{nth($duration, 2)} linear -20s infinite alternate;
-      
-      @media (min-width: $medium) {
-        animation: moveX #{nth($duration, 3)} linear -10s infinite alternate, moveY #{nth($duration, 4)} linear -10s infinite alternate;
-      }
-    }
-  }
+}
 
-  .tag { 
-    text-transform: uppercase;
-    font-size: .8em;
-    background: $beige;
-    border: 1px solid $black;
-    display: inline-block;
-    padding: 2px 10px;
-    border-radius: 2em;
-    white-space: nowrap;
-    
-    @media (min-width: $medium) {
-      padding: 2px 20px;
-      font-size: 1.2em;
-    }
-  }
-  
-  @keyframes moveX {
-    from { left: 0; } to { left: calc(100% - 200px); }
-  }
+.tag {
+  text-transform: uppercase;
+  font-size: 0.8em;
+  background: var(--color-beige);
+  border: 1px solid var(--color-black);
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 2em;
+  white-space: nowrap;
 
-  @keyframes moveXmobile {
-    from { left: 0; } to { left: calc(100% - 120px); }
+  @media (min-width: $widthMedium) {
+    padding: 2px 20px;
+    font-size: 1.2em;
   }
-  
-  @keyframes moveY {
-    from { top: 0; } to { top: calc(100% - 20px); }
+}
+
+@keyframes moveX {
+  from {
+    left: 0;
   }
+  to {
+    left: calc(100% - 200px);
+  }
+}
+
+@keyframes moveXmobile {
+  from {
+    left: 0;
+  }
+  to {
+    left: calc(100% - 120px);
+  }
+}
+
+@keyframes moveY {
+  from {
+    top: 0;
+  }
+  to {
+    top: calc(100% - 20px);
+  }
+}

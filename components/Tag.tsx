@@ -1,20 +1,18 @@
-import React from "react";
+import React, { createRef, CSSProperties, useEffect } from "react";
 import style from "../assets/scss/Tag.module.scss"
 
-class Tag extends React.Component {
-    constructor(props) {
-        super(props);
-        this.tagRef = React.createRef();
-    }
+const Tag = ({children}) => {
+
+    const tagRef = createRef<HTMLDivElement>();
     
-    animateTags() { 
-        let tagEl = this.tagRef.current;
+    useEffect(() => {
+    const animateTags = () => { 
+        let tagEl = tagRef.current;
         if (tagEl) { 
         //     // x and y are the co-ordinates of the circle
         //     // vx and vy are the respective speeds
         let tagWidth = tagEl.offsetWidth;
-            let tagHeight = tagEl.offsetHeight;
-            console.log(tagEl, tagWidth)
+        let tagHeight = tagEl.offsetHeight;
  
         var x = Math.floor(Math.random() * (window.innerWidth - tagWidth));
         var y = Math.floor(Math.random() * (window.innerHeight - tagHeight));
@@ -26,13 +24,9 @@ class Tag extends React.Component {
         tagEl.style.top = y + 'px';
  
         move();
-        
-        let introEl = document.getElementById("intro");
-        // introEl.addEventListener('mousemove', move);
 
         setInterval(move, 34)
            
-        //     // This function will do the animation
         function move() {
  
         //         // Conditions sso that the ball bounces
@@ -56,17 +50,17 @@ class Tag extends React.Component {
                 tagEl.style.top = y + 'px';
             }
         }
-    }
+    };
+    animateTags();
+}, [tagRef]);
 
-    render() { 
         return <>
-            <div className={style.tagWrap} ref={this.tagRef}>
+            <div className={style.tagWrap} ref={tagRef}>
                 <div className={style.tag} >
-                    {this.props.children}
+                    {children}
                 </div>
             </div>
         </>
-    }
 }
 
 export default Tag;

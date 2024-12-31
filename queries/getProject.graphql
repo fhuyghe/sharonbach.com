@@ -1,0 +1,58 @@
+query getProject($slug: String) {
+  projects(filters: { slug: { eq: $slug } }) {
+    data {
+      attributes {
+        slug
+        title
+        blurb
+        intro
+        categories {
+          data {
+            id
+            attributes {
+              name
+            }
+          }
+        }
+        Content {
+          __typename
+          ... on ComponentContentBlockText {
+            id
+            text
+          }
+          ... on ComponentContentBlockImage {
+            id
+            image {
+              data {
+                id
+                attributes {
+                  url
+                  width
+                  height
+                  caption
+                  name
+                }
+              }
+            }
+          }
+          ... on ComponentContentBlockImages {
+            id
+            columns
+            images {
+              data {
+                id
+                attributes {
+                  url
+                  width
+                  height
+                  caption
+                  name
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

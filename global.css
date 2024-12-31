@@ -1,0 +1,44 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --color-beige: #F2EEE5;
+  --color-black: #000000;
+  --color-grey: #666;
+  
+  /* Breakpoints */
+  --width-medium: 768px;
+  --width-gutter: 50px;
+
+}
+
+/* Font */
+@font-face {
+  font-family: 'SFProDisplay';
+  src: url('assets/fonts/SFProDisplay-Light.woff2') format('woff2'),
+    url('assets/fonts/SFProDisplay-Light.woff') format('woff');
+  font-weight: lighter;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cirka';
+  src: url('assets/fonts/PPCirka-Light.woff2') format('woff2'),
+    url('assets/fonts/PPCirka-Light.woff') format('woff');
+  font-weight: lighter;
+  font-style: normal;
+  font-display: swap;
+}

@@ -1,4 +1,5 @@
-@import './variables.scss';
+@import './_variables';
+
 .container {
   padding: 0 0;
 }
@@ -13,8 +14,8 @@
   font-size: 1.5em;
   font-family: 'Cirka';
   line-height: 1.4em;
-  
-  @media (min-width: $medium) {
+
+  @media (min-width: $widthMedium) {
     font-size: 3.5em;
   }
 }
@@ -22,31 +23,31 @@
 .title {
   font-size: 1.5em;
   font-family: 'Cirka';
-  line-height: .5em;
-  margin-top: calc($grid-gutter / 2);
+  line-height: 0.5em;
+  margin-top: calc(var(--width-gutter) / 2);
 
-  @media (min-width: $medium) {
+  @media (min-width: $widthMedium) {
     font-size: 3em;
   }
 }
 
-.projects{
+.projects {
   margin: 0;
-  
-  @media (min-width: $medium) {
-    margin: $grid-gutter 0;
+
+  @media (min-width: $widthMedium) {
+    margin: var(--width-gutter) 0;
   }
 }
 
-.about{
-  margin-top: calc($grid-gutter / 2);
+.about {
+  margin-top: calc(var(--width-gutter) / 2);
   font-family: 'Cirka';
-  
-  @media (min-width: $medium) {
-    margin-top: calc($grid-gutter * 2);
+
+  @media (min-width: $widthMedium) {
+    margin-top: calc(var(--width-gutter) * 2);
   }
-  
-  h2{
-    margin-top: calc($grid-gutter);
+
+  h2 {
+    margin-top: calc(var(--width-gutter));
   }
 }
