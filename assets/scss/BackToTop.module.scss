@@ -1,4 +1,4 @@
-@import './_variables';
+@use 'variables';
 
 .backButton {
   position: fixed;
@@ -12,7 +12,7 @@
   justify-content: center;
   transition: 0.5s;
 
-  @media (min-width: $widthMedium) {
+  @media (min-width: variables.$widthMedium) {
     width: 100px;
     height: 100px;
     bottom: calc(var(--width-gutter) / 2);
@@ -24,7 +24,7 @@
   @extend .backButton;
   bottom: -70px;
 
-  @media (min-width: $widthMedium) {
+  @media (min-width: variables.$widthMedium) {
     bottom: -100px;
   }
 }

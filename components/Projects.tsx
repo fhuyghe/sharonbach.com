@@ -12,18 +12,13 @@ const Projects = () => {
   const projects = data.projects.data;
 
 return (
-    <div>
-          <div className="uk-child-width-1-2@m uk-grid-match uk-grid-medium" data-uk-grid uk-grid="masonry: true">
-            {projects.map((project) => {
-              return (
-                <Card
-                  project={project as ProjectEntity}
-                  key={project.id}
-                />
-              );
-            })}
-          </div>
-    </div>
+      <section className="lg:columns-2 gap-5 items-start">
+        {projects.map((project) => (<Card
+              project={project as ProjectEntity}
+              key={project.id}
+            />)
+        )}
+      </section>
   );
 };
 

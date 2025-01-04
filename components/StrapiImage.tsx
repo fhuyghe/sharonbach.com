@@ -7,7 +7,7 @@ interface Props extends Partial<ImageProps> {
   image?: UploadFile | null;
 }
 
-const ImageEl = ({ image, ...props }: Props ) => {
+export const StrapiImage = ({ image, ...props }: Props ) => {
   const imageUrl = getStrapiMedia(image);
 
   return (
@@ -22,5 +22,3 @@ const ImageEl = ({ image, ...props }: Props ) => {
     />
   );
 };
-
-export default ImageEl;

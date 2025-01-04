@@ -1,7 +1,8 @@
-import style from '../assets/scss/BackToTop.module.scss';
 import Image from 'next/image';
-import backToTopIcon from '../assets/images/icon-backtotop.svg';
 import { useState } from 'react';
+
+import backToTopIcon from '../assets/images/icon-backtotop.svg';
+import style from '../assets/scss/BackToTop.module.scss';
 
 const BackToTop = () => {
   const scrollThreshold = 200;

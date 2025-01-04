@@ -1,11 +1,11 @@
-@import './_variables';
+@use 'variables';
 
 .tagWrap {
   position: absolute;
   width: 130px;
   overflow: hidden;
 
-  @media (min-width: $widthMedium) {
+  @media (min-width: variables.$widthMedium) {
     width: 200px;
   }
 }
@@ -23,7 +23,7 @@ $durations:
       moveXmobile #{nth($duration, 1)} linear -20s infinite alternate,
       moveY #{nth($duration, 2)} linear -20s infinite alternate;
 
-    @media (min-width: $widthMedium) {
+    @media (min-width: variables.$widthMedium) {
       animation:
         moveX #{nth($duration, 3)} linear -10s infinite alternate,
         moveY #{nth($duration, 4)} linear -10s infinite alternate;
@@ -41,7 +41,7 @@ $durations:
   border-radius: 2em;
   white-space: nowrap;
 
-  @media (min-width: $widthMedium) {
+  @media (min-width: variables.$widthMedium) {
     padding: 2px 20px;
     font-size: 1.2em;
   }

@@ -24,7 +24,7 @@ const ProjectWrap = ({slug}: {slug: string}) => {
     setLeaving(true);
     setTimeout(() => {
       setLeaving(false);
-      router.push('/', '');
+      router.push('/', '', {shallow: true});
     }, 500);
   };
 

@@ -1203,6 +1203,11 @@ export type GetProjectsQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetProjectsQuery = { __typename?: 'Query', projects: { __typename?: 'ProjectEntityResponseCollection', data: Array<{ __typename?: 'ProjectEntity', id: string | null, attributes: { __typename?: 'Project', createdAt: any | null, title: string | null, blurb: string | null, slug: string | null, featuredImage: { __typename?: 'UploadFileEntityResponse', data: { __typename?: 'UploadFileEntity', attributes: { __typename?: 'UploadFile', url: string, width: number | null, height: number | null, alternativeText: string | null, name: string } | null } | null } | null } | null }> } | null };
 
+export type GetSiteSettingsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetSiteSettingsQuery = { __typename?: 'Query', global: { __typename?: 'GlobalEntityResponse', data: { __typename?: 'GlobalEntity', attributes: { __typename?: 'Global', websiteName: string | null, description: string | null, shareImage: { __typename?: 'UploadFileEntityResponse', data: { __typename?: 'UploadFileEntity', attributes: { __typename?: 'UploadFile', formats: any | null } | null } | null } | null } | null } | null } | null };
+
 
 export const GetPageHomeDocument = gql`
     query getPageHome {
@@ -1400,3 +1405,54 @@ export type GetProjectsQueryHookResult = ReturnType<typeof useGetProjectsQuery>;
 export type GetProjectsLazyQueryHookResult = ReturnType<typeof useGetProjectsLazyQuery>;
 export type GetProjectsSuspenseQueryHookResult = ReturnType<typeof useGetProjectsSuspenseQuery>;
 export type GetProjectsQueryResult = Apollo.QueryResult<GetProjectsQuery, GetProjectsQueryVariables>;
+export const GetSiteSettingsDocument = gql`
+    query getSiteSettings {
+  global {
+    data {
+      attributes {
+        websiteName
+        description
+        shareImage {
+          data {
+            attributes {
+              formats
+            }
+          }
+        }
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetSiteSettingsQuery__
+ *
+ * To run a query within a React component, call `useGetSiteSettingsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetSiteSettingsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetSiteSettingsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetSiteSettingsQuery(baseOptions?: Apollo.QueryHookOptions<GetSiteSettingsQuery, GetSiteSettingsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetSiteSettingsQuery, GetSiteSettingsQueryVariables>(GetSiteSettingsDocument, options);
+      }
+export function useGetSiteSettingsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetSiteSettingsQuery, GetSiteSettingsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetSiteSettingsQuery, GetSiteSettingsQueryVariables>(GetSiteSettingsDocument, options);
+        }
+export function useGetSiteSettingsSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetSiteSettingsQuery, GetSiteSettingsQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetSiteSettingsQuery, GetSiteSettingsQueryVariables>(GetSiteSettingsDocument, options);
+        }
+export type GetSiteSettingsQueryHookResult = ReturnType<typeof useGetSiteSettingsQuery>;
+export type GetSiteSettingsLazyQueryHookResult = ReturnType<typeof useGetSiteSettingsLazyQuery>;
+export type GetSiteSettingsSuspenseQueryHookResult = ReturnType<typeof useGetSiteSettingsSuspenseQuery>;
+export type GetSiteSettingsQueryResult = Apollo.QueryResult<GetSiteSettingsQuery, GetSiteSettingsQueryVariables>;

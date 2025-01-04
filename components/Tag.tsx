@@ -1,4 +1,5 @@
-import React, { createRef, CSSProperties, useEffect } from "react";
+import React, { createRef, useEffect } from "react";
+
 import style from "../assets/scss/Tag.module.scss"
 
 const Tag = ({children}) => {
@@ -28,26 +29,16 @@ const Tag = ({children}) => {
         setInterval(move, 34)
            
         function move() {
- 
-        //         // Conditions sso that the ball bounces
-        //         // from the edges
-                if (tagWidth + x > window.innerWidth)
-                    vx = 0 - vx;
- 
-                if (x < 0)
-                    vx = 0 - vx;
- 
-                if (y + tagHeight > window.innerHeight)
-                    vy = 0 - vy;
- 
-                if (y < 0)
-                    vy = 0 - vy;
- 
-                    x = x + vx;
-                    y = y + vy;
-                    
-                tagEl.style.left = x + 'px';
-                tagEl.style.top = y + 'px';
+            if (tagWidth + x > window.innerWidth) vx = 0 - vx;
+            if (x < 0) vx = 0 - vx;
+            if (y + tagHeight > window.innerHeight) vy = 0 - vy;
+            if (y < 0) vy = 0 - vy;
+
+            x = x + vx;
+            y = y + vy;
+                
+            tagEl.style.left = x + 'px';
+            tagEl.style.top = y + 'px';
             }
         }
     };

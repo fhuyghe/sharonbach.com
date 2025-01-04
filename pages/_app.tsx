@@ -1,16 +1,19 @@
-import App from 'next/app';
-import { useEffect } from 'react';
-import { useRouter } from 'next/router';
-import { DefaultSeo } from 'next-seo';
-import Head from 'next/head';
-import Script from 'next/script';
 import '../assets/scss/style.scss';
-import { createContext } from 'react';
-import { fetchAPI } from '../lib/api';
-import * as ga from '../lib/ga';
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import '../global.css';
+
+import { ApolloClient, ApolloProvider,InMemoryCache } from '@apollo/client';
+import App from 'next/app';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
+import Script from 'next/script';
+import { DefaultSeo } from 'next-seo';
+import { OpenGraphMedia } from 'next-seo/lib/types';
+import { useEffect } from 'react';
+import { createContext } from 'react';
 import React from 'react';
+
+import {GetSiteSettingsDocument, GetSiteSettingsQuery, GlobalEntity} from '../generated/graphql';
+import * as ga from '../lib/ga';
 
 //Start Apollo client
 const client = new ApolloClient({
@@ -24,14 +27,14 @@ const client = new ApolloClient({
 export const GlobalContext = createContext({});
 
 const MyApp = ({ Component, pageProps }) => {
-  const { global } = pageProps;
+  const { siteSettings } = pageProps as {siteSettings: GlobalEntity};
   const router = useRouter();
 
   //SEO
   const metadata = {
-    metaTitle: global.data.attributes.websiteName,
-    metaDescription: global.data.attributes.description,
-    shareImage: global.data.attributes.shareImage,
+    metaTitle: siteSettings.attributes.websiteName,
+    metaDescription: siteSettings.attributes.description,
+    shareImage: siteSettings.attributes.shareImage,
   };
 
   //GA page tracking
@@ -71,10 +74,6 @@ const MyApp = ({ Component, pageProps }) => {
           href="/favicon-16x16.png"
         />
         <link rel="manifest" href="/site.webmanifest" />
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/uikit@3.2.3/dist/css/uikit.min.css"
-        />
         <script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-Y001TKEJ77"
@@ -98,17 +97,7 @@ const MyApp = ({ Component, pageProps }) => {
         openGraph={{
           images: Object.values(
             metadata.shareImage.data.attributes.formats,
-          ).map((image) => {
-            return {
-              url: image.url,
-              width: image.width,
-              height: image.height,
-            };
-          }),
-        }}
-        twitter={{
-          cardType: metadata.twitterCardType,
-          handle: metadata.twitterUsername,
+          ) as OpenGraphMedia[],
         }}
       />
 
@@ -116,7 +105,7 @@ const MyApp = ({ Component, pageProps }) => {
       <Script src="https://cdn.jsdelivr.net/npm/uikit@3.2.3/dist/js/uikit-icons.min.js" />
       <Script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.js" />
 
-      <GlobalContext.Provider value={global}>
+      <GlobalContext.Provider value={siteSettings}>
         <ApolloProvider client={client}>
           <Component {...pageProps} />
         </ApolloProvider>
@@ -127,8 +116,15 @@ const MyApp = ({ Component, pageProps }) => {
 
 MyApp.getInitialProps = async (ctx) => {
   const appProps = await App.getInitialProps(ctx);
-  const global = await fetchAPI('/api/global?populate=*');
-  return { ...appProps, pageProps: { global } };
+
+  try {
+    const { data } = await client.query<GetSiteSettingsQuery>({ query: GetSiteSettingsDocument });
+
+    return { ...appProps, pageProps: { siteSettings: data.global.data } };
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    return { ...appProps };
+  }
 };
 
 export default MyApp;

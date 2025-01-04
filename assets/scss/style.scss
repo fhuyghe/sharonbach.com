@@ -1,4 +1,4 @@
-@import './_variables';
+@use 'variables';
 
 html {
   height: 100%;
@@ -20,7 +20,7 @@ body {
 body.project-open {
   position: fixed;
 
-  @media (min-width: $widthMedium) {
+  @media (min-width: variables.$widthMedium) {
     padding-right: 16px;
   }
 }

@@ -3,8 +3,8 @@ import ReactMarkdown from 'react-markdown';
 
 import styles from '../assets/scss/Project.module.scss';
 import type { Project as TProject } from '../generated/graphql';
-import Image from './Image';
 import Seo from './Seo';
+import {StrapiImage} from './StrapiImage';
 
 interface Props {
   project: TProject;
@@ -46,7 +46,7 @@ const Project = ({ project, isLeaving }: Props) => {
             if (section.__typename == 'ComponentContentBlockImages')
               return (
                 <section
-                  key={`gallery-${section.id}`}
+                  key={section.id}
                   className={styles.gallerySection}
                 >
                   <div
@@ -61,7 +61,7 @@ const Project = ({ project, isLeaving }: Props) => {
                     {section.images.data.map((image) => {
                       return (
                         <div key={image.id} className={styles.galleryColumn}>
-                          <Image image={image.attributes} alt="project image" />
+                          <StrapiImage image={image.attributes} />
                         </div>
                       );
                     })}
@@ -73,10 +73,10 @@ const Project = ({ project, isLeaving }: Props) => {
             if (section.__typename == 'ComponentContentBlockImage')
               return (
                 <section
-                  key={`image-${section.id}`}
+                  key={section.id}
                   className={styles.imageSection}
                 >
-                  <Image image={section.image.data.attributes} alt="project image" />
+                  <StrapiImage image={section.image.data.attributes} />
                 </section>
               );
 
@@ -84,7 +84,7 @@ const Project = ({ project, isLeaving }: Props) => {
             if (section.__typename == 'ComponentContentBlockText')
               return (
                 <section
-                  key={`text-${section.id}`}
+                  key={section.id}
                   className={styles.textSection}
                 >
                   <ReactMarkdown linkTarget="_blank">

@@ -1,4 +1,4 @@
-@import './_variables';
+@use 'variables';
 
 .projectBlock {
   position: fixed;
@@ -12,7 +12,7 @@
   overflow-y: auto;
   animation: slideInMobile 0.5s ease-in-out forwards;
 
-  @media (min-width: $widthMedium) {
+  @media (min-width: variables.$widthMedium) {
     animation: slideIn 0.5s ease-in-out forwards;
     width: 90%;
     max-width: 1200px;
@@ -24,7 +24,7 @@
   @extend .projectBlock;
   animation: slideOutMobile 0.5s ease-in-out forwards;
 
-  @media (min-width: $widthMedium) {
+  @media (min-width: variables.$widthMedium) {
     animation: slideOut 0.5s ease-in-out forwards;
   }
 }
@@ -38,7 +38,7 @@
   cursor: pointer;
   transition: 0.25s;
 
-  @media (min-width: $widthMedium) {
+  @media (min-width: variables.$widthMedium) {
     width: 50px;
     right: 25px;
   }
@@ -61,7 +61,7 @@
   left: 50%;
   transform: translateX(-50%);
 
-  @media (min-width: $widthMedium) {
+  @media (min-width: variables.$widthMedium) {
     padding: var(--width-gutter);
   }
 }
@@ -96,7 +96,7 @@
   margin-right: 10px;
   margin-bottom: 5px;
 
-  @media (min-width: $widthMedium) {
+  @media (min-width: variables.$widthMedium) {
     font-size: 0.9em;
     padding: 2px 20px;
   }
@@ -113,7 +113,7 @@
     margin-bottom: 0;
   }
 
-  @media (min-width: $widthMedium) {
+  @media (min-width: variables.$widthMedium) {
     margin-bottom: 0;
   }
 }
@@ -139,7 +139,7 @@
   font-size: 0.8em;
   margin-bottom: 0.3em;
 
-  @media (min-width: $widthMedium) {
+  @media (min-width: variables.$widthMedium) {
     font-size: 1.3em;
   }
 }
@@ -150,7 +150,7 @@
   color: var(--color-black);
   margin-top: 0;
 
-  @media (min-width: $widthMedium) {
+  @media (min-width: variables.$widthMedium) {
     font-size: 2.3em;
   }
 }

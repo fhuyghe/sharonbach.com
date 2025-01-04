@@ -1,0 +1,17 @@
+query getSiteSettings {
+  global {
+    data {
+      attributes {
+        websiteName
+        description
+        shareImage {
+          data {
+            attributes {
+              formats
+            }
+          }
+        }
+      }
+    }
+  }
+}

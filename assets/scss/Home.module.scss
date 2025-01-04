@@ -1,4 +1,4 @@
-@import './_variables';
+@use 'variables';
 
 .container {
   padding: 0 0;
@@ -15,26 +15,15 @@
   font-family: 'Cirka';
   line-height: 1.4em;
 
-  @media (min-width: $widthMedium) {
+  @media (min-width: variables.$widthMedium) {
     font-size: 3.5em;
-  }
-}
-
-.title {
-  font-size: 1.5em;
-  font-family: 'Cirka';
-  line-height: 0.5em;
-  margin-top: calc(var(--width-gutter) / 2);
-
-  @media (min-width: $widthMedium) {
-    font-size: 3em;
   }
 }
 
 .projects {
   margin: 0;
 
-  @media (min-width: $widthMedium) {
+  @media (min-width: variables.$widthMedium) {
     margin: var(--width-gutter) 0;
   }
 }
@@ -43,7 +32,7 @@
   margin-top: calc(var(--width-gutter) / 2);
   font-family: 'Cirka';
 
-  @media (min-width: $widthMedium) {
+  @media (min-width: variables.$widthMedium) {
     margin-top: calc(var(--width-gutter) * 2);
   }
 
