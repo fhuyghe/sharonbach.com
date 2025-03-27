@@ -17,6 +17,7 @@ export default function Home() {
     if (error) return <p>Error :</p>;
     
   const homeData = data.home.data.attributes
+  const currentSlug = (slugs ?? [])[0]
 
   return (
     <div className={styles.container}>
@@ -36,7 +37,7 @@ export default function Home() {
         <Projects />
 
         {/* Open Project */}
-        {slugs?.length > 0 && <ProjectWrap slug={slugs[0]} />}
+        <ProjectWrap slug={currentSlug} />
 
         {/* Bottom */}
           <section className={styles.about}>
