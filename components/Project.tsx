@@ -1,10 +1,9 @@
-import React from 'react';
 import ReactMarkdown from 'react-markdown';
 
 import styles from '../assets/scss/Project.module.scss';
 import type { Project as TProject } from '../generated/graphql';
 import Seo from './Seo';
-import {StrapiImage} from './StrapiImage';
+import { StrapiImage } from './StrapiImage';
 
 interface Props {
   project: TProject;
@@ -45,10 +44,7 @@ const Project = ({ project, isLeaving }: Props) => {
             //Gallery of Images
             if (section.__typename == 'ComponentContentBlockImages')
               return (
-                <section
-                  key={section.id}
-                  className={styles.gallerySection}
-                >
+                <section key={section.id} className={styles.gallerySection}>
                   <div
                     className={
                       section.columns == 'three'
@@ -72,10 +68,7 @@ const Project = ({ project, isLeaving }: Props) => {
             // Single Image
             if (section.__typename == 'ComponentContentBlockImage')
               return (
-                <section
-                  key={section.id}
-                  className={styles.imageSection}
-                >
+                <section key={section.id} className={styles.imageSection}>
                   <StrapiImage image={section.image.data.attributes} />
                 </section>
               );
@@ -83,13 +76,8 @@ const Project = ({ project, isLeaving }: Props) => {
             // TEXT
             if (section.__typename == 'ComponentContentBlockText')
               return (
-                <section
-                  key={section.id}
-                  className={styles.textSection}
-                >
-                  <ReactMarkdown linkTarget="_blank">
-                    {section.text}
-                  </ReactMarkdown>
+                <section key={section.id} className={styles.textSection}>
+                  <ReactMarkdown>{section.text}</ReactMarkdown>
                 </section>
               );
           })}
