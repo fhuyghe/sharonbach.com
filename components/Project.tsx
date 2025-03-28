@@ -27,7 +27,7 @@ const Project = ({ project, isLeaving }: Props) => {
       <Seo metadata={seo} />
       <div className={styles.projectWrap}>
         <div className="uk-container">
-          {categories && (
+          {/* {categories && (
             <div id="categories">
               {categories.data.map((cat) => {
                 return (
@@ -37,7 +37,7 @@ const Project = ({ project, isLeaving }: Props) => {
                 );
               })}
             </div>
-          )}
+          )} */}
           <h1 className={styles.title}>{project.title}</h1>
           <p className={styles.intro}>{project.intro}</p>
           {project.Content.map((section) => {

@@ -126,10 +126,37 @@
   font-family: 'Cirka';
   margin-bottom: var(--width-gutter);
 
-  h1,
-  h2 {
-    font-family: 'Cirka';
+  & > * {
     margin-top: 0;
+    margin-bottom: 1em;
+  }
+
+  h1,
+  h2,
+  h3 {
+    margin-bottom: 0;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+  }
+
+  ul {
+    list-style: disc;
+    margin-left: 1rem;
+
+    li {
+      padding-left: 0.5rem;
+      margin-bottom: 0.5em;
+    }
   }
 }
 
@@ -146,12 +173,14 @@
 
 .intro {
   font-family: 'Cirka';
-  font-size: 1.5em;
+  font-size: 1.5rem;
+  line-height: 1.25em;
   color: var(--color-black);
   margin-top: 0;
+  margin-bottom: 2rem;
 
   @media (min-width: variables.$widthMedium) {
-    font-size: 2.3em;
+    font-size: 2.3rem;
   }
 }
 
