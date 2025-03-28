@@ -6,7 +6,10 @@ import BackToTop from '../components/BackToTop';
 import Projects from '../components/Projects';
 import ProjectWrap from '../components/ProjectWrap';
 import Tag from '../components/Tag';
-import { useGetPageHomeQuery } from '../generated/graphql';
+import {
+  ProjectRelationResponseCollection,
+  useGetPageHomeQuery,
+} from '../generated/graphql';
 
 export default function Home() {
   const { slug: slugs } = useParams<{ slug: string[] }>();
@@ -18,6 +21,9 @@ export default function Home() {
   const homeData = data.home.data.attributes;
   const currentSlug = (slugs ?? [])[0];
 
+  const tagsString = homeData.tags ?? '';
+  const tags = tagsString.split(',').map((tag) => tag.trim());
+
   return (
     <div className={styles.container}>
       <main className={styles.main}>
@@ -25,14 +31,17 @@ export default function Home() {
           <section id="intro">
             <h1 className={styles.intro}>{homeData.intro}</h1>
             <div className="tags">
-              <Tag>Interactivity</Tag>
-              <Tag>Packaging</Tag>
-              <Tag>Branding</Tag>
-              <Tag>Web design</Tag>
+              {tags.map((tag) => (
+                <Tag key={tag}>{tag}</Tag>
+              ))}
             </div>
           </section>
 
-          <Projects />
+          <Projects
+            projectsData={
+              homeData.projects as ProjectRelationResponseCollection
+            }
+          />
 
           {/* Open Project */}
           <ProjectWrap slug={currentSlug} />

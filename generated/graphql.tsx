@@ -235,7 +235,17 @@ export type Home = {
   clients: Maybe<Scalars['String']['output']>;
   createdAt: Maybe<Scalars['DateTime']['output']>;
   intro: Maybe<Scalars['String']['output']>;
+  projects: Maybe<ProjectRelationResponseCollection>;
+  tags: Maybe<Scalars['String']['output']>;
   updatedAt: Maybe<Scalars['DateTime']['output']>;
+};
+
+
+export type HomeProjectsArgs = {
+  filters: InputMaybe<ProjectFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 export type HomeEntity = {
@@ -253,6 +263,8 @@ export type HomeInput = {
   about: InputMaybe<Scalars['String']['input']>;
   clients: InputMaybe<Scalars['String']['input']>;
   intro: InputMaybe<Scalars['String']['input']>;
+  projects: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  tags: InputMaybe<Scalars['String']['input']>;
 };
 
 export type I18NLocale = {
@@ -1189,7 +1201,7 @@ export type UsersPermissionsUserRelationResponseCollection = {
 export type GetPageHomeQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetPageHomeQuery = { __typename?: 'Query', home: { __typename?: 'HomeEntityResponse', data: { __typename?: 'HomeEntity', attributes: { __typename?: 'Home', about: string | null, intro: string | null, clients: string | null } | null } | null } | null };
+export type GetPageHomeQuery = { __typename?: 'Query', home: { __typename?: 'HomeEntityResponse', data: { __typename?: 'HomeEntity', attributes: { __typename?: 'Home', about: string | null, intro: string | null, clients: string | null, tags: string | null, projects: { __typename?: 'ProjectRelationResponseCollection', data: Array<{ __typename?: 'ProjectEntity', id: string | null, attributes: { __typename?: 'Project', createdAt: any | null, title: string | null, blurb: string | null, slug: string | null, featuredImage: { __typename?: 'UploadFileEntityResponse', data: { __typename?: 'UploadFileEntity', attributes: { __typename?: 'UploadFile', url: string, width: number | null, height: number | null, alternativeText: string | null, name: string } | null } | null } | null } | null }> } | null } | null } | null } | null };
 
 export type GetProjectQueryVariables = Exact<{
   slug: InputMaybe<Scalars['String']['input']>;
@@ -1217,6 +1229,29 @@ export const GetPageHomeDocument = gql`
         about
         intro
         clients
+        tags
+        projects {
+          data {
+            id
+            attributes {
+              createdAt
+              title
+              blurb
+              slug
+              featuredImage {
+                data {
+                  attributes {
+                    url
+                    width
+                    height
+                    alternativeText
+                    name
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
   }

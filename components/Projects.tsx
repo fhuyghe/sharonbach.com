@@ -1,24 +1,35 @@
-import React from "react";
+import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
+import {
+  ProjectEntity,
+  ProjectRelationResponseCollection,
+} from '../generated/graphql';
 
-import { ProjectEntity, useGetProjectsQuery } from "../generated/graphql";
-import Card from "./Card";
+import Card from './Card';
 
+interface Props {
+  projectsData: ProjectRelationResponseCollection;
+}
 
-const Projects = () => {
-  const { loading, error, data } = useGetProjectsQuery()
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :</p>;
-    
-  const projects = data.projects.data;
+const Projects = ({ projectsData }: Props) => {
+  const projects = projectsData?.data ?? [];
 
-return (
-      <section className="lg:columns-2 gap-5 items-start">
-        {projects.map((project) => (<Card
+  return (
+    <div className="mt-10">
+      <ResponsiveMasonry
+        columnsCountBreakPoints={{ 350: 1, 900: 2 }}
+        gutterBreakpoints={{ 350: '12px', 900: '25px' }}
+      >
+        <Masonry gutter={25}>
+          {projects.map((project, index) => (
+            <Card
               project={project as ProjectEntity}
+              className={index === 1 ? 'md:pt-20' : ''}
               key={project.id}
-            />)
-        )}
-      </section>
+            />
+          ))}
+        </Masonry>
+      </ResponsiveMasonry>
+    </div>
   );
 };
 
