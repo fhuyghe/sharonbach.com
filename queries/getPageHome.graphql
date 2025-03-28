@@ -5,6 +5,29 @@ query getPageHome {
         about
         intro
         clients
+        tags
+        projects {
+          data {
+            id
+            attributes {
+              createdAt
+              title
+              blurb
+              slug
+              featuredImage {
+                data {
+                  attributes {
+                    url
+                    width
+                    height
+                    alternativeText
+                    name
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
   }
